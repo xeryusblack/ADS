@@ -1,7 +1,7 @@
 class CreateVarsityMembers < ActiveRecord::Migration
   def change
     create_table :varsity_members, id: false do |t|
-      t.primary_key :vm_id
+      t.primary_key :id
       t.string :first_name, null: false
       t.string :last_name, null: false
       t.integer :year, null: false

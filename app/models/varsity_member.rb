@@ -15,4 +15,8 @@ class VarsityMember < ActiveRecord::Base
 	validates :debater_position, :presence :true, :length :{ maximum: 23 } inclusion: { in: POSITION }
 	validates :total_debt, :length :{ maximum: 7 }
 	validates :total_acquired_quota_points, :length :{ maximum: 3 }
+
+	has_many :debt_settlements
+	has_many :competition_debts
+	has_many :acquired_quota_points
 end

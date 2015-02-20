@@ -11,38 +11,74 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150219163952) do
+ActiveRecord::Schema.define(version: 20150220144716) do
+
+  create_table "acquired_quota_points", force: true do |t|
+    t.decimal "amount",               precision: 10, scale: 0, default: 0,            null: false
+    t.date    "date_conducted",                                default: '2015-02-20', null: false
+    t.integer "varsity_member_id",                                                    null: false
+    t.integer "training_activity_id",                                                 null: false
+  end
+
+  add_index "acquired_quota_points", ["training_activity_id"], name: "index_acquired_quota_points_on_training_activity_id", using: :btree
+  add_index "acquired_quota_points", ["varsity_member_id"], name: "index_acquired_quota_points_on_varsity_member_id", using: :btree
 
   create_table "competition_debts", force: true do |t|
-    t.string  "source_of_debt"
-    t.decimal "debt_amount",       precision: 10, scale: 0
-    t.integer "competition_id"
-    t.integer "varsity_member_id"
+    t.string  "source_of_debt",                                         null: false
+    t.decimal "debt_amount",       precision: 10, scale: 0, default: 0, null: false
+    t.integer "competition_id",                                         null: false
+    t.integer "varsity_member_id",                                      null: false
   end
+
+  add_index "competition_debts", ["competition_id"], name: "index_competition_debts_on_competition_id", using: :btree
+  add_index "competition_debts", ["varsity_member_id"], name: "index_competition_debts_on_varsity_member_id", using: :btree
 
   create_table "competitions", force: true do |t|
-    t.string  "name"
-    t.integer "number_of_contingent"
-    t.decimal "arqp_contingent_debater",      precision: 10, scale: 0
-    t.decimal "arqp_contingent_adjudicator",  precision: 10, scale: 0
-    t.decimal "arqp_non_contingent",          precision: 10, scale: 0
-    t.string  "presidential_approval_status"
-    t.date    "start_date"
-    t.date    "end_date"
-    t.decimal "quota_point_monetary_value",   precision: 10, scale: 0
+    t.string  "name",                                                                         null: false
+    t.integer "number_of_contingent",                                                         null: false
+    t.decimal "arqp_contingent_debater",      precision: 10, scale: 0,                        null: false
+    t.decimal "arqp_contingent_adjudicator",  precision: 10, scale: 0,                        null: false
+    t.decimal "arqp_non_contingent",          precision: 10, scale: 0,                        null: false
+    t.string  "presidential_approval_status",                                                 null: false
+    t.date    "start_date",                                            default: '2015-02-20', null: false
+    t.date    "end_date",                                              default: '2015-02-20', null: false
+    t.decimal "quota_point_monetary_value",   precision: 10, scale: 0, default: 0,            null: false
   end
 
+  create_table "contingents", force: true do |t|
+    t.string  "debater_position",  default: "Non-contingent", null: false
+    t.integer "varsity_member_id",                            null: false
+    t.integer "competition_id",                               null: false
+  end
+
+  add_index "contingents", ["competition_id"], name: "index_contingents_on_competition_id", using: :btree
+  add_index "contingents", ["varsity_member_id"], name: "index_contingents_on_varsity_member_id", using: :btree
+
   create_table "debt_settlements", force: true do |t|
-    t.decimal "amount_paid", precision: 10, scale: 0
-    t.date    "date_paid"
+    t.decimal "amount_paid",       precision: 10, scale: 0, default: 0,            null: false
+    t.date    "date_paid",                                  default: '2015-02-20', null: false
+    t.integer "varsity_member_id",                                                 null: false
+    t.integer "officer_id",                                                        null: false
+  end
+
+  add_index "debt_settlements", ["officer_id"], name: "index_debt_settlements_on_officer_id", using: :btree
+  add_index "debt_settlements", ["varsity_member_id"], name: "index_debt_settlements_on_varsity_member_id", using: :btree
+
+  create_table "officers", force: true do |t|
+    t.string "name", null: false
+  end
+
+  create_table "training_activities", force: true do |t|
+    t.string  "name",                                                   null: false
+    t.decimal "quota_point_value", precision: 10, scale: 0, default: 0, null: false
   end
 
   create_table "tryout_intents", force: true do |t|
-    t.date   "date",             null: false
-    t.string "debater_position", null: false
+    t.date   "date",             default: '2015-02-20', null: false
+    t.string "debater_position",                        null: false
   end
 
-  create_table "varsity_members", primary_key: "vm_id", force: true do |t|
+  create_table "varsity_members", force: true do |t|
     t.string  "first_name",                                                                      null: false
     t.string  "last_name",                                                                       null: false
     t.integer "year",                                                                            null: false
@@ -51,8 +87,8 @@ ActiveRecord::Schema.define(version: 20150219163952) do
     t.string  "contact_number",                                                                  null: false
     t.string  "varsity_track",                                                                   null: false
     t.string  "debater_position",                                     default: "Non-contingent", null: false
-    t.decimal "total_debt",                  precision: 10, scale: 0, default: 0,                null: false
-    t.integer "total_acquired_quota_points",                          default: 0,                null: false
+    t.decimal "total_debt",                  precision: 10, scale: 0, default: 0
+    t.integer "total_acquired_quota_points",                          default: 0
   end
 
 end
