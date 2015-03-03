@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150220144716) do
+ActiveRecord::Schema.define(version: 20150303080751) do
 
   create_table "acquired_quota_points", force: true do |t|
     t.decimal "amount",               precision: 10, scale: 0, default: 0,            null: false
@@ -63,6 +63,26 @@ ActiveRecord::Schema.define(version: 20150220144716) do
 
   add_index "debt_settlements", ["officer_id"], name: "index_debt_settlements_on_officer_id", using: :btree
   add_index "debt_settlements", ["varsity_member_id"], name: "index_debt_settlements_on_varsity_member_id", using: :btree
+
+  create_table "officer_in_charges", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "name"
+    t.string   "office"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "officer_in_charges", ["email"], name: "index_officer_in_charges_on_email", unique: true, using: :btree
+  add_index "officer_in_charges", ["reset_password_token"], name: "index_officer_in_charges_on_reset_password_token", unique: true, using: :btree
 
   create_table "officers", force: true do |t|
     t.string "name", null: false
