@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  #root 'devise/registrations#new'
+  get 'pages/index'
+
+  root 'pages#index'
   resources :varsity_members
   resources :tryout_intents
   resources :training_activities

@@ -1,0 +1,26 @@
+<h1>Pages#index</h1>
+<% if officer_in_charge_signed_in? %>
+  <p><strong>Email</strong>: <%=current_officer_in_charge.email%></p>
+  <p><strong>User Type</strong>: <%=current_officer_in_charge.role %></p>
+  <% if current_user.role== "otv" %>
+    <p><%= link_to "Items", items_path %> | <%= link_to "Inventory", inventories_path %> | <%= link_to "Invoices", invoices_path %> | <%= link_to "Suppliers", suppliers_path %></p>
+  <% elsif current_user.user_type == "of" %>
+    <p><%= link_to "Purchase Item", purchased_products_path %></p>
+  <% elsif current_user.user_type == "supplier" %>
+    <p><%= link_to "Suppliers", suppliers_path %> | <%= link_to "Invoice", invoices_path %>
+  <% end %>
+  <p><%= link_to "Logout", destroy_user_session_path, :method => :delete %></p>
+<% else %>
+  <p><%= link_to "Login", new_user_session_path %></p>
+<% end %>
+
+
+<!--<%= link_to link_to "Customers", controller: "customers", action: "index" %>
+
+<br>
+
+<%= link_to link_to "Inventories", controller: "inventories", action: "index" %>
+
+<br>
+
+<%= link_to link_to "Items", controller: "items", action: "index" %>-->
