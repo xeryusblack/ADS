@@ -1,4 +1,4 @@
-class OfficersInChargeController < ApplicationController
+class OfficerInChargesController < ApplicationController
   def index
     @officers_in_charge = OfficerInCharge.all 
 

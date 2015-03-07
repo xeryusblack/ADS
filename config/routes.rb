@@ -1,15 +1,22 @@
 Rails.application.routes.draw do
 
+  #root 'devise/registrations#new'
   resources :varsity_members
   resources :tryout_intents
   resources :training_activities
-  resources :officers_in_charge
   resources :debt_settlements
   resources :competitions
   resources :contingents
   resources :acquired_quota_points
 
   devise_for :officer_in_charges
+
+# devise_scope :officer_in_charges do
+#    get "signup", to: "devise/registrations#new"
+#    get "login", to: "devise/sessions#new"
+#    get "logout", to: "devise/sessions#destroy"
+# end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
