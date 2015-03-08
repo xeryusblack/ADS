@@ -48,6 +48,6 @@ class OfficerInChargesController < ApplicationController
   end
 
   def officer_in_charge_params
-    params.require(:officer_in_charge).permit!
+    params.require(:officer_in_charge).permit( {:role_ids => []})
   end
 end
