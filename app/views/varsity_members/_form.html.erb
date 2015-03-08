@@ -15,7 +15,7 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.collection_select :year, 1..4 %>
+    <%= f.input :year, :collection => 1..4, :as => :select %>
   </div>
 
   <div class="form-inputs">
