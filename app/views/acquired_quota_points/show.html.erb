@@ -1,2 +1,24 @@
-<h1>AcquiredQuotaPoints#show</h1>
-<p>Find me in app/views/acquired_quota_points/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Varsity Member:</strong>
+  <%= @acquired_quota_point.varsity_members %>
+</p>
+
+<p>
+  <strong>Training Activity:</strong>
+  <%= @acquired_quota_point.training_activity %>
+</p>
+
+<p>
+  <strong>Date Conducted:</strong>
+  <%= @acquired_quota_point.date_conducted %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @acquired_quota_point.amount %>
+</p>
+
+<%= link_to 'Edit', edit_acquired_quota_point_path(@acquired_quota_point) %> |
+<%= link_to 'Back', acquired_quota_points_path %>

@@ -1,2 +1,31 @@
-<h1>AcquiredQuotaPoints#index</h1>
-<p>Find me in app/views/acquired_quota_points/index.html.erb</p>
+<h1>Listing Varsity Members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Varsity Member</th>
+      <th>Training Activity</th>
+      <th>Date Conducted</th>
+      <th>Amount</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @acquired_quota_points.each do |acquired_quota_point| %>
+      <tr>
+        <td><%= acquired_quota_point.varsity_member %></td>
+        <td><%= acquired_quota_point.training_activity %></td>
+        <td><%= acquired_quota_point.date_conducted %></td>
+        <td><%= acquired_quota_point.amount %></td>
+        <td><%= link_to 'Show', acquired_quota_point %></td>
+        <td><%= link_to 'Edit', edit_acquired_quota_point_path(acquired_quota_point) %></td>
+        <td><%= link_to 'Destroy', acquired_quota_point, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Entry', new_acquired_quota_point_path %>
