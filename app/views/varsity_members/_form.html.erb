@@ -2,8 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.label "ID" %>
-    <%= f.input :vm_id %>
+    <%= f.input :id, prompt: "ID" %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :year, collection: 1..4 %>
