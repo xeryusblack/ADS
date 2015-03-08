@@ -13,11 +13,12 @@ Rails.application.routes.draw do
 
   devise_for :officer_in_charges
 
-# devise_scope :officer_in_charges do
-#    get "signup", to: "devise/registrations#new"
-#    get "login", to: "devise/sessions#new"
-#    get "logout", to: "devise/sessions#destroy"
-# end
+devise_scope :officer_in_charges do
+    get "signup", to: "devise/registrations#new"
+    get "/signin" => "devise/sessions#new"
+    post "/signin" => "devise/sessions#create"
+    delete "/logout" => "devise/sessions#destroy"
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
