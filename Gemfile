@@ -28,7 +28,8 @@ gem 'spring', '~> 1.3.3',       group: :development
 
 gem 'devise'
 
-gem 'cancan'
+gem 'cancancan', '~> 1.9'
+
 
 gem 'simple_form'
 
