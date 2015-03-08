@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :role_id) }
   end
+
+def current_ability
+      @current_ability ||= Ability.new(current_officer_in_charge)
+end
 end

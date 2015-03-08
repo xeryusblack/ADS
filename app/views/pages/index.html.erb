@@ -4,8 +4,8 @@
   <p><strong>Email</strong>: <%=current_officer_in_charge.email%></p>
   <p><strong>User Type</strong>: <%= @role%></p>
 
-  <% if @role== "Office of Training and Varisity" %>
-    <p><%= link_to "Contingents", contingents_path %> | <%= link_to "Competitions", competitions_path %> | <%= link_to "Training Activities", training_activities_path %> | <%= link_to "Varsity Members", varisity_members_path %> | <%= link_to "Tryout Intent", tryout_intents_path %></p>
+  <% if @role== "Office of Training and Varsity" %>
+    <p><%= link_to "Contingents", contingents_path %> | <%= link_to "Competitions", competitions_path %> | <%= link_to "Training Activities", training_activities_path %> | <%= link_to "Varsity Members", varsity_members_path %> | <%= link_to "Tryout Intent", tryout_intents_path %></p>
   <% elsif @role == "Office of Finance" %>
     <p><%= link_to "Acquired Quota Points", acquired_quota_points_path %> | <%= link_to "Debt Settlements", debt_settlements_path %> | <%= link_to "Varsity Members", varsity_members_path %></p>
   <% end %>
@@ -13,5 +13,8 @@
 
 <% else %>
   <p><%= link_to "Login", new_officer_in_charge_session_path %></p>
+<% end %>
+<% if officer_in_charge_signed_in? %>
+<%= link_to "Contingents", new_contingent_path if can? :create, Contingent %> 
 <% end %>
 
