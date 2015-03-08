@@ -3,9 +3,12 @@
 
   <div class="form-inputs">
     <%= f.label 'What was the training activity done?' %>
-    <%= f.input :training_activity %>
+    <%= f.input :training_activity, :as => :select, :collection => TrainingActivity.all %>
+  </div>
+
+  <div class="form-inputs">
     <%= f.fields_for :varsity_member do |varsity_member|%>
-      <%= varsity_member.textfield "Member" %>
+      <%= varsity_member.collection_select :varsity_member, :id, :first_name  %>
       <%= varsity_member.link_to_remove "Remove" %>
     <% end %>
     <p><%= f.link_to_add "Add a member", :varsity_member %></p>

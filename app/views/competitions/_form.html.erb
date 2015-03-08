@@ -3,13 +3,37 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
+  </div>
+
+  <div class="form-inputs">
     <%= f.input :number_of_contingent %>
+  </div>
+
+  <div class="form-inputs">
     <%= f.input :arqp_contingent_debater %>
+  </div>
+
+  <div class="form-inputs">
     <%= f.input :arqp_contingent_adjudicator %>
+  </div>
+
+  <div class="form-inputs">
     <%= f.input :arqp_non_contingent %>
+  </div>
+
+  <div class="form-inputs">
     <%= f.input :presidential_approval_status, :as => :select, :collection => Competition::STATUS %>
+  </div>
+
+  <div class="form-inputs">
     <%= f.date_select :start_date %>
+  </div>
+
+  <div class="form-inputs">
     <%= f.date_select :end_date %>
+  </div>
+
+  <div class="form-inputs">
     <%= f.input :quota_point_monetary_value %>
   </div>
 

@@ -31,11 +31,11 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.input :varsity_track, :as => :select, :collection => VarsityMember::TRACK %>
+    <%= f.input :varsity_track, :as => :select, :collection => VarsityMember::TRACK, :include_blank => false %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :debater_position, :as => :select, :collection => VarsityMember::POSITION %>
+    <%= f.input :debater_position, :as => :select, :collection => VarsityMember::POSITION, :include_blank => false %>
   </div>
 
   <div class="form-actions">
