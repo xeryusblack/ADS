@@ -17,7 +17,7 @@
 
   <div class="form-inputs">
     <%= f.fields_for :varsity_member do |varsity_member|%>
-      <%= varsity_member.collection_select :varsity_member, :id, :first_name  %>
+      <%= varsity_member.association :varsity_member %>
       <%= varsity_member.link_to_remove "Remove" %>
     <% end %>
     <p><%= f.link_to_add "Add a member", :varsity_member %></p>

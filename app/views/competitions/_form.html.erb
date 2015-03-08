@@ -6,23 +6,23 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.input :number_of_contingent %>
+    <%= f.textfield :number_of_contingent %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :arqp_contingent_debater %>
+    <%= f.input :arqp_contingent_debater, :label => "Assigned Required Quota Points for Contingent Debater" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :arqp_contingent_adjudicator %>
+    <%= f.input :arqp_contingent_adjudicator, :label => "Assigned Required Quota Points for Contingent Adjudicator" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :arqp_non_contingent %>
+    <%= f.input :arqp_non_contingent, :label => "Assigned Required Quota Points for Non-Contingent" %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :presidential_approval_status, :as => :select, :collection => Competition::STATUS %>
+    <%= f.input :presidential_approval_status, :as => :select, :collection => Competition::STATUS, :label => "Presidential Approval Status" %>
   </div>
 
   <div class="form-inputs">
