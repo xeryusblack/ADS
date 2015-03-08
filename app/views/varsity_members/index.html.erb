@@ -12,7 +12,9 @@
       <th>E-mail Address</th>
       <th>Varsity Track</th>
       <th>Debater Position</th>
-      <th colspan="9"></th>
+      <th>Total Debt</th>
+      <th>Total Acquired Quota Points</th>
+      <th colspan="11"></th>
     </tr>
   </thead>
 
@@ -28,6 +30,8 @@
         <td><%= varsity_member.email_address %></td>
         <td><%= varsity_member.varsity_track %></td>
         <td><%= varsity_member.debater_position %></td>
+        <td><%= varsity_member.total_debt %></td>
+        <td><%= varsity_member.total_acquired_quota_points %></td>
         <td><%= link_to 'Show', varsity_member %></td>
         <td><%= link_to 'Edit', edit_varsity_member_path(varsity_member) %></td>
         <td><%= link_to 'Destroy', varsity_member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
