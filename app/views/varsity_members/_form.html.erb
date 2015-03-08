@@ -5,7 +5,7 @@
     <%= f.input :vm_id %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <%= f.input :year %>
+    <%= f.input :year, collection: 1..4 %>
     <%= f.input :course %>
     <%= f.input :contact_number %>
     <%= f.input :email_address %>

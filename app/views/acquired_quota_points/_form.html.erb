@@ -1,0 +1,14 @@
+<%= simple_form_for(@acquired_quota_point) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.label 'What was the training activity done?' %>
+    <%= f.input :training_activity %>
+    <%= f.label 'How many members participated?'] %>
+    <%= f.input collection: 1..10 %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
