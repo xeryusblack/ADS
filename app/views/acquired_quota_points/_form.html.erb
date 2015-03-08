@@ -4,8 +4,11 @@
   <div class="form-inputs">
     <%= f.label 'What was the training activity done?' %>
     <%= f.input :training_activity %>
-    <%= f.label 'How many members participated?'] %>
-    <%= f.input collection: 1..10 %>
+    <%= f.fields_for :varsity_member do |varsity_member|%>
+      <%= varsity_member.textfield "Member" %>
+      <%= varsity_member.link_to_remove "Remove" %>
+    <% end %>
+    <p><%= f.link_to_add "Add a member", :varsity_member %></p>
   </div>
 
   <div class="form-actions">
