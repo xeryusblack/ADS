@@ -19,23 +19,23 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.text_field :course %>
+    <%= f.input :course %>
   </div>
 
   <div class="form-inputs">
-    <%= f.text_field :contact_number %>
+    <%= f.input :contact_number %>
   </div>
 
   <div class="form-inputs">
-    <%= f.text_field :email_address %>
+    <%= f.input :email_address %>
   </div>
 
   <div class="form-inputs">
-    <%= f.collection_select :varsity_track, ("Debater", "Adjudicator", "Debater and Adjudicator") %>
+    <%= f.input :varsity_track, :as => :select, :collection => VarsityMember::TRACK %>
   </div>
 
   <div class="form-inputs">
-    <%= f.collection_select :debater_position, ("Contingent Debater", "Contingent Adjudicator", "Non-contingent") %>
+    <%= f.input :debater_position, :as => :select, :collection => VarsityMember::POSITION %>
   </div>
 
   <div class="form-actions">
