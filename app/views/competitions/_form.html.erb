@@ -1,0 +1,19 @@
+<%= simple_form_for(@competition) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :number_of_contingent %>
+    <%= f.input :arqp_contingent_debater %>
+    <%= f.input :arqp_contingent_adjudicator %>
+    <%= f.input :arqp_non_contingent %>
+    <%= f.input :presidential_approval_status %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.input :quota_point_monetary_value %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
