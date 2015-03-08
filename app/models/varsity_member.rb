@@ -13,7 +13,7 @@ class VarsityMember < ActiveRecord::Base
 	validates :email_address, presence: true, length: { maximum: 40 }
 	validates :varsity_track, presence: true, length: { maximum: 15 }, inclusion: { in: TRACK }
 	validates :debater_position, presence: true, length: { maximum: 23 }, inclusion: { in: POSITION }
-	validates :txotal_debt, length: { maximum: 7 }
+	validates :total_debt, length: { maximum: 7 }
 	validates :total_acquired_quota_points, length: { maximum: 3 }
 
 	has_many :debt_settlements
