@@ -1,2 +1,41 @@
-<h1>VarsityMembers#index</h1>
-<p>Find me in app/views/varsity_members/index.html.erb</p>
+<h1>Listing Varsity Members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Year</th>
+      <th>Course</th>
+      <th>Contact Number</th>
+      <th>E-mail Address</th>
+      <th>Varsity Track</th>
+      <th>Debater Position</th>
+      <th colspan="9"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @varsity_members.each do |varsity_member| %>
+      <tr>
+        <td><%= varsity_member.id %></td>
+        <td><%= varsity_member.first_name %></td>
+        <td><%= varsity_member.last_name %></td>
+        <td><%= varsity_member.year %></td>
+        <td><%= varsity_member.course %></td>
+        <td><%= varsity_member.contact_number %></td>
+        <td><%= varsity_member.email_address %></td>
+        <td><%= varsity_member.varsity_track %></td>
+        <td><%= varsity_member.debater_position %></td>
+        <td><%= link_to 'Show', varsity_member %></td>
+        <td><%= link_to 'Edit', edit_varsity_member_path(varsity_member) %></td>
+        <td><%= link_to 'Destroy', varsity_member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Varsity Member', new_varsity_member_path %>

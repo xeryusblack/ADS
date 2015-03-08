@@ -30,6 +30,10 @@ gem 'devise'
 
 gem 'cancan'
 
+gem 'simple_form'
+
+gem 'nested_form'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
