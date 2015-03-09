@@ -1,4 +1,5 @@
 class CompetitionDebtsController < ApplicationController
+   load_and_authorize_resource
   def index
     @competition_debts = CompetitionDebt.all 
 

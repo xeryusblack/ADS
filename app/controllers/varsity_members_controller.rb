@@ -1,4 +1,5 @@
 class VarsityMembersController < ApplicationController
+   load_and_authorize_resource
   def index
     @varsity_members = VarsityMember.all 
 

@@ -20,6 +20,9 @@ class Ability
       # can :manage, Asset do |asset|
       #   asset.assetable.try(:owner) == user
       # end
+    else
+      # Guest permissions
+      can :read, :all
     end
   end
 end

@@ -1,4 +1,5 @@
 class DebtSettlementsController < ApplicationController
+   load_and_authorize_resource
   def index
     @debt_settlements = DebtSettlement.all 
 

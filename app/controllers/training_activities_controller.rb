@@ -1,4 +1,5 @@
 class TrainingActivitiesController < ApplicationController
+   load_and_authorize_resource
   def index
     @training_activities = TrainingActivity.all 
 

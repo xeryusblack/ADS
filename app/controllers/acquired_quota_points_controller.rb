@@ -1,4 +1,5 @@
 class AcquiredQuotaPointsController < ApplicationController
+   load_and_authorize_resource
   def index
     @acquired_quota_points = AcquiredQuotaPoint.all 
 

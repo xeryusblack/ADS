@@ -1,4 +1,5 @@
 class TryoutIntentsController < ApplicationController
+   load_and_authorize_resource
   def index
     @tryout_intents = TryoutIntent.all 
 
