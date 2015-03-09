@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308040828) do
+ActiveRecord::Schema.define(version: 20150309025639) do
 
   create_table "acquired_quota_points", force: true do |t|
     t.decimal "amount",               precision: 10, scale: 0, default: 0,            null: false

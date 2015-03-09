@@ -1,10 +1,9 @@
 class VarsityMember < ActiveRecord::Base
-	self.primary_key = "vm_id"
 
 	TRACK = ["Debater", "Adjudicator", "Debater and Adjudicator"]
 	POSITION = ["Contingent Debater", "Contingent Adjudicator", "Non-contingent"]
 
-	validates :vm_id, presence: true, length: { is: 6 }, :uniqueness => { :message => "ID number already exist" }
+	#validates :vm_id, presence: true, length: { is: 6 }, :uniqueness => { :message => "ID number already exist" }
 	validates :first_name, presence: true, length: { maximum: 30}
 	validates :last_name, presence: true, length: { maximum: 30}
 	validates :year, presence: true, length: { is: 1 }
