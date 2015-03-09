@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309025639) do
+ActiveRecord::Schema.define(version: 20150309031123) do
 
   create_table "acquired_quota_points", force: true do |t|
     t.decimal "amount",               precision: 10, scale: 0, default: 0,            null: false
@@ -123,16 +123,19 @@ ActiveRecord::Schema.define(version: 20150309025639) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "varsity_members", force: true do |t|
-    t.string  "first_name",                                                                      null: false
-    t.string  "last_name",                                                                       null: false
-    t.integer "year",                                                                            null: false
-    t.string  "course",                                                                          null: false
-    t.string  "email_address",                                                                   null: false
-    t.string  "contact_number",                                                                  null: false
-    t.string  "varsity_track",                                                                   null: false
-    t.string  "debater_position",                                     default: "Non-contingent", null: false
-    t.decimal "total_debt",                  precision: 10, scale: 0, default: 0
-    t.integer "total_acquired_quota_points",                          default: 0
+    t.integer  "vm_id",                                                                           null: false
+    t.string   "first_name",                                                                      null: false
+    t.string   "last_name",                                                                       null: false
+    t.integer  "year",                                                                            null: false
+    t.string   "course",                                                                          null: false
+    t.string   "email_address",                                                                   null: false
+    t.string   "contact_number",                                                                  null: false
+    t.string   "varsity_track",                                                                   null: false
+    t.string   "debater_position",                                     default: "Non-contingent", null: false
+    t.decimal  "total_debt",                  precision: 10, scale: 0, default: 0
+    t.integer  "total_acquired_quota_points",                          default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

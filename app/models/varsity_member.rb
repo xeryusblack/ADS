@@ -1,6 +1,5 @@
 class VarsityMember < ActiveRecord::Base
-
-	TRACK = ["Debater", "Adjudicator", "Debater and Adjudicator"]
+		TRACK = ["Debater", "Adjudicator", "Debater and Adjudicator"]
 	POSITION = ["Contingent Debater", "Contingent Adjudicator", "Non-contingent"]
 
 	#validates :vm_id, presence: true, length: { is: 6 }, :uniqueness => { :message => "ID number already exist" }
