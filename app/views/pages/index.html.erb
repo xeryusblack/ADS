@@ -8,6 +8,9 @@
     <p><%= link_to "Contingents", contingents_path %> | <%= link_to "Competitions", competitions_path %> | <%= link_to "Training Activities", training_activities_path %> | <%= link_to "Varsity Members", varsity_members_path %> | <%= link_to "Tryout Intent", tryout_intents_path %></p>
   <% elsif @role == "Office of Finance" %>
     <p><%= link_to "Acquired Quota Points", acquired_quota_points_path %> | <%= link_to "Debt Settlements", debt_settlements_path %> | <%= link_to "Varsity Members", varsity_members_path %></p>
+
+    <% elsif @role == "Administrator" %>
+    <p><%= link_to "Acquired Quota Points", acquired_quota_points_path %> | <%= link_to "Debt Settlements", debt_settlements_path %> | <%= link_to "Varsity Members", varsity_members_path %> | <%= link_to "Contingents", contingents_path %> | <%= link_to "Competitions", competitions_path %> | <%= link_to "Training Activities", training_activities_path %> | <%= link_to "Tryout Intent", tryout_intents_path %></p>
   <% end %>
   <p><%= link_to "Sign out", destroy_officer_in_charge_session_path%></p>
 

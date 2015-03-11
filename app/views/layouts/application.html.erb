@@ -8,11 +8,18 @@
   <%= csrf_meta_tags %>
 
 
-
 </head>
 
 <body>
+	<% if officer_in_charge_signed_in? %>
+  <p><%= link_to "Sign out", destroy_officer_in_charge_session_path%></p>
+  <%= link_to 'Home', pages_path %>
+
+<% else %>
+  <p><%= link_to "Login", new_officer_in_charge_session_path %></p>
+<% end %>
 	<%= yield %> 
+
 </body>
 
 </html>

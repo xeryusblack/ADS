@@ -16,7 +16,8 @@ class VarsityMember < ActiveRecord::Base
 
 	has_many :debt_settlements
 	has_many :competition_debts
-	has_many :acquired_quota_points
+	has_many :acquired_quota_points, through: :activity_members
+	has_many :activity_members
 
 	validate :cannot_be_wrong
 
@@ -28,5 +29,9 @@ class VarsityMember < ActiveRecord::Base
 	    if self.vm_id > 999999
 	      errors.add(:vm_id, "Must contain valid ID Number (6 digits)")
 	    end
+	end
+
+	def to_s
+		self.first_name + " " + self.last_name
 	end
 end

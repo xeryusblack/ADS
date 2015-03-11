@@ -17,7 +17,6 @@ class DebtSettlement < ActiveRecord::Base
 
 	def load_officer
 		self.officer_id = current_officer_in_charge.id
-  	end
   end
 
 	after_create :update_varisty_member_quota_point

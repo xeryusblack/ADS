@@ -11,17 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309031123) do
+ActiveRecord::Schema.define(version: 20150311135157) do
 
   create_table "acquired_quota_points", force: true do |t|
     t.decimal "amount",               precision: 10, scale: 0, default: 0,            null: false
     t.date    "date_conducted",                                default: '2015-02-20', null: false
-    t.integer "varsity_member_id",                                                    null: false
     t.integer "training_activity_id",                                                 null: false
   end
 
   add_index "acquired_quota_points", ["training_activity_id"], name: "index_acquired_quota_points_on_training_activity_id", using: :btree
-  add_index "acquired_quota_points", ["varsity_member_id"], name: "index_acquired_quota_points_on_varsity_member_id", using: :btree
+
+  create_table "activity_members", force: true do |t|
+    t.integer  "varsity_member_id"
+    t.integer  "acquired_quota_point_id"
+    t.integer  "round"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "competition_debts", force: true do |t|
     t.string  "source_of_debt",                                         null: false

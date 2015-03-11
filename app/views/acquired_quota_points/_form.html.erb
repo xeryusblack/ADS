@@ -11,18 +11,15 @@
     <%= f.date_select :date_conducted %>
   </div>
 
-  <div class="form-inputs">
-    <%= f.input :amount %>
-  </div>
 
   <div class="form-inputs">
-    <%= f.fields_for :varsity_member do |ff|%>
+    <%= f.fields_for :activity_members do |ff|%>
       <%= ff.association :varsity_member %>
 
-      <%= ff.collection_select(:role_id, Role.all, :id, :name) %>
-      <%= varsity_member.link_to_remove "Remove" %>
+      <%= ff.input :round %>
+      <%= ff.link_to_remove "Remove" %>
     <% end %>
-    <p><%= f.link_to_add "Add a member", :varsity_member %></p>
+    <p><%= f.link_to_add "Add a member", :activity_members %></p>
   </div>
 
   <div class="form-actions">
