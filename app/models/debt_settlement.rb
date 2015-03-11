@@ -1,6 +1,6 @@
 class DebtSettlement < ActiveRecord::Base
 	belongs_to :varsity_member
-	belongs_to :officer
+	belongs_to :officer_in_charge
 
 	validates :amount_paid, length: { maximum: 6 }, numericality: true
 	validates :date_paid, presence: true
@@ -12,6 +12,13 @@ class DebtSettlement < ActiveRecord::Base
 	      errors.add(:amount_paid, "Quantity must not be negative or zero!")
 	    end
 	end
+
+	before_validation :load_officer
+
+	def load_officer
+		self.officer_id = current_officer_in_charge.id
+  	end
+  end
 
 	after_create :update_varisty_member_quota_point
 

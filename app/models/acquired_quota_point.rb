@@ -1,5 +1,5 @@
 class AcquiredQuotaPoint < ActiveRecord::Base
-	belongs_to :varsity_member
+	has_and_belongs_to_many :varsity_members
 	belongs_to :training_activity
 
 
@@ -7,6 +7,8 @@ class AcquiredQuotaPoint < ActiveRecord::Base
 	validates :date_conducted, presence: true
 
 	validate :cannot_be_negative
+
+	accepts_nested_attributes_for :varsity_members
 
 	def cannot_be_negative
 	 	if self.amount <= 0

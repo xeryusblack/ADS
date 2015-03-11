@@ -1,4 +1,4 @@
-<%= simple_form_for(@acquired_quota_point) do |f| %>
+<%= simple_nested_form_for(@acquired_quota_point) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -16,8 +16,10 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.fields_for :varsity_member do |varsity_member|%>
-      <%= varsity_member.association :varsity_member %>
+    <%= f.fields_for :varsity_member do |ff|%>
+      <%= ff.association :varsity_member %>
+
+      <%= ff.collection_select(:role_id, Role.all, :id, :name) %>
       <%= varsity_member.link_to_remove "Remove" %>
     <% end %>
     <p><%= f.link_to_add "Add a member", :varsity_member %></p>
