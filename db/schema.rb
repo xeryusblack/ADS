@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311135157) do
+ActiveRecord::Schema.define(version: 20150311153028) do
 
   create_table "acquired_quota_points", force: true do |t|
     t.decimal "amount",               precision: 10, scale: 0, default: 0,            null: false
@@ -106,8 +106,9 @@ ActiveRecord::Schema.define(version: 20150311135157) do
   end
 
   create_table "tryout_intents", force: true do |t|
-    t.date   "date",             default: '2015-02-20', null: false
-    t.string "debater_position",                        null: false
+    t.date    "date",              default: '2015-02-20', null: false
+    t.string  "debater_position",                         null: false
+    t.integer "varsity_member_id"
   end
 
   create_table "users", force: true do |t|

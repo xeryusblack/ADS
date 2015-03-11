@@ -18,6 +18,7 @@ class VarsityMember < ActiveRecord::Base
 	has_many :competition_debts
 	has_many :acquired_quota_points, through: :activity_members
 	has_many :activity_members
+	has_many :tryout_intents
 
 	validate :cannot_be_wrong
 

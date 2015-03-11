@@ -12,7 +12,7 @@
 
 <p>
   <strong>Debt Amount:</strong>
-  <%= @competition_debt.debt_amount %>
+  <%= number_to_currency(@competition_debt.debt_amount, :unit => "Php") %>
 </p>
 
 <%= link_to 'Edit', edit_competition_debt_path(@competition_debt) %> |

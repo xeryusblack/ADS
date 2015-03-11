@@ -19,9 +19,19 @@ class CompetitionDebt < ActiveRecord::Base
 
     	sum = 0
     	vm = VarsityMember.find(self.varsity_member_id)
+    	if vm.total_debt != 0
+       		um = vm.total_debt - self.debt_amount
+       		user.update(:total_debt => sum)
+    	end
 
-       	sum = vm.total_debt + self.debt_amount
-    
-      	user.update(:total_debt => sum)
+	end
+
+	before_create :check_total_debt
+
+	def check_total_debt
+    	vm = VarsityMember.find(self.varsity_member_id)
+    	if vm.total_debt == 0
+    		raise "ERROR: Varsity Total Debt is already 0" 
+    	end
 	end
 end
