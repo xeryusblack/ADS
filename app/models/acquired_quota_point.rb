@@ -27,7 +27,7 @@ class AcquiredQuotaPoint < ActiveRecord::Base
    end
 
 
-	#after_create :update_varisty_member_quota_point
+	#after_create :update_varisty_member_total_debt
 
 	def update_varisty_member_quota_point
 
@@ -54,11 +54,12 @@ class AcquiredQuotaPoint < ActiveRecord::Base
         #self.varsity_member_id = am.varsity_member_id
 
       self.activity_members.each do |amember|
-    	   sum = ta.quota_point_value * amember.round
+    	   
+            sum = ta.quota_point_value * amember.round
             #self.varsity_members.each do |vmember|
             vm = VarsityMember.find(amember.varsity_member_id)
-                total = vm.total_acquired_quota_points + sum
-                vm.update(:total_acquired_quota_points => total)
+                aqp_total = vm.total_acquired_quota_points + sum
+                vm.update(:total_acquired_quota_points => aqp_total)
     
     	   #self.amount = sum
       end
@@ -75,5 +76,6 @@ class AcquiredQuotaPoint < ActiveRecord::Base
   def displayAmount(member_id, training_id)
       TrainingActivity.find(self.training_activity_id).quota_point_value * ActivityMember.find(member_id).round
   end
+
 
 end

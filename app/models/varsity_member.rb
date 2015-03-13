@@ -19,6 +19,7 @@ class VarsityMember < ActiveRecord::Base
 	has_many :acquired_quota_points, through: :activity_members
 	has_many :activity_members
 	has_many :tryout_intents
+	has_many :competitons, through: :competition_debts
 
 	validate :cannot_be_wrong
 
@@ -32,7 +33,27 @@ class VarsityMember < ActiveRecord::Base
 	    end
 	end
 
+
 	def to_s
 		self.first_name + " " + self.last_name
 	end
+
+	# def calculate_total_debt
+	# 	competition = Competition.find(self.competition_id)
+	# 	vm = VarsityMember.find(self.varsity_member_id)
+
+	# 	position = vm.debater_positon
+
+		
+
+	# 	competiton.avm.total_acquired_quota_points 
+	# 	money = competition.quota_point_monetary_value
+
+
+	# 	selfVarsityMember.all.each do |member|
+	# 		member.total_debt = member.total_debt + (member.total_acquired_quota_points * member.competitons
+	# 	end
+	# end
+
+	
 end
