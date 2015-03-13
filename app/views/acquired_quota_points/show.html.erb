@@ -10,7 +10,9 @@
   <%= @acquired_quota_point.date_conducted %>
 </p>
 
-<p> <strong>Varsity Member:</strong> </p>
+<p> 
+  <strong>Varsity Member:</strong> 
+</p>
 
     <table style="width: 100%;">
     <tr>
@@ -25,6 +27,7 @@
         <%= number_to_currency( @acquired_quota_point.displayAmount(member.id, @acquired_quota_point.training_activity_id ) , :unit => "Php") %>
       </tr>
     <% end %>
+  </table>
 
 
 <!-- <p>

@@ -3,6 +3,7 @@ class Competition < ActiveRecord::Base
 	has_many :contingents
 	has_many :activity_members
 
+
 	STATUS = ["Ongoing", "Completed", "Upcoming", "Processing"]
 
 	validates :name, presence: true, length: { maximum: 30}
@@ -39,6 +40,20 @@ class Competition < ActiveRecord::Base
 	    end
 	end
 
+  validate :status_check
+  def status_check
+      competition = Competition.find_by(presidential_approval_status: "Ongoing")
+
+      if self.presidential_approval_status == "Ongoing" && competition != nil
+        raise "Error: A competition is currently ongoing"
+        errors.add(:presidential_approval_status, "A competition is currently ongoing")
+      end
+
+      if self.presidential_approval_status == "Completed" 
+        raise "Error: Competition is alredy completed"
+        errors.add(:presidential_approval_status, "Competition is alredy completed")
+      end
+  end
 	  def ongoing!
     if self.presidential_approval_status == "Ongoing"
       raise "ERROR: Competition already Ongoing" 
@@ -65,7 +80,7 @@ class Competition < ActiveRecord::Base
 
   def processing!
     result = false
-      if self.self.presidential_approval_status == "Processing"
+      if self.presidential_approval_status == "Processing" || self.presidential_approval_status == "Completed"
         raise "ERROR: Competition already Processing" 
         return result = false
       else
@@ -73,6 +88,7 @@ class Competition < ActiveRecord::Base
         return result = true
       end
   end
+
   after_update :total_debt, if:  Proc.new { |competition| competition.presidential_approval_status == "Processing" } #{competition.presidential_approval_status == "processing"}
   
   def total_debt 
@@ -113,6 +129,8 @@ class Competition < ActiveRecord::Base
             end
         end
     end
+
+    self.update!(presidential_approval_status: "Completed")
   end
 
 end
