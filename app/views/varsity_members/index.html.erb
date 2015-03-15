@@ -44,7 +44,7 @@
 
 <%= link_to 'New Varsity Member', new_varsity_member_path %>
 
-<% @competition = Competition.find_by(presidential_approval_status: "Ongoing") %>
+<% @competition = Competition.find_by(status: "Ongoing") %>
 
 <% if @competition != nil %>
 <%= button_to "End Training Session", edit_competition_path(@competition.id), method: :get %>
