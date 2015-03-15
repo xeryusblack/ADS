@@ -133,4 +133,8 @@ class Competition < ActiveRecord::Base
     self.update!(status: "Completed")
   end
 
+  def to_s
+    self.name
+  end 
+
 end
