@@ -24,7 +24,7 @@
       <tr>
         <td><%= member.varsity_member.to_s%></td>
         <td><%= member.round %></td>
-        <%= number_to_currency( @acquired_quota_point.displayAmount(member.id, @acquired_quota_point.training_activity_id ) , :unit => "Php") %>
+        <td><%= number_to_currency( @acquired_quota_point.displayAmount(member.id, @acquired_quota_point.training_activity_id ) , :unit => "Php") %></td>
       </tr>
     <% end %>
   </table>
