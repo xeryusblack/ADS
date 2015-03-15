@@ -134,7 +134,7 @@ class Competition < ActiveRecord::Base
   end
 
   def to_s
-    sel.name
+    self.name
   end 
 
 end
