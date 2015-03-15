@@ -35,7 +35,7 @@ class TrainingActivitiesController < ApplicationController
   def update
     @training_activity = TrainingActivity.find(params[:id])
 
-    if @training_activity.update(training_activitie_params)
+    if @training_activity.update(training_activity_params)
       redirect_to training_activity_path(@training_activity)
     else
       render(:template => "training_activities/edit")
