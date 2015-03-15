@@ -6,7 +6,7 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.input :number_of_contingent %>
+    <%= f.input :number_of_contingent, label: 'Number of members in the contingent' %>
   </div>
 
   <div class="form-inputs">
@@ -22,7 +22,7 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.input :presidential_approval_status, :as => :select, :collection => Competition::STATUS, :label => "Presidential Approval Status" %>
+    <%= f.input :status, :as => :select, :collection => Competition::STATUS, :label => "Status" %>
   </div>
 
   <div class="form-inputs">

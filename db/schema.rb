@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311153028) do
+ActiveRecord::Schema.define(version: 20150315063859) do
 
   create_table "acquired_quota_points", force: true do |t|
     t.decimal "amount",               precision: 10, scale: 0, default: 0,            null: false
@@ -40,15 +40,15 @@ ActiveRecord::Schema.define(version: 20150311153028) do
   add_index "competition_debts", ["varsity_member_id"], name: "index_competition_debts_on_varsity_member_id", using: :btree
 
   create_table "competitions", force: true do |t|
-    t.string  "name",                                                                         null: false
-    t.integer "number_of_contingent",                                                         null: false
-    t.decimal "arqp_contingent_debater",      precision: 10, scale: 0,                        null: false
-    t.decimal "arqp_contingent_adjudicator",  precision: 10, scale: 0,                        null: false
-    t.decimal "arqp_non_contingent",          precision: 10, scale: 0,                        null: false
-    t.string  "presidential_approval_status",                                                 null: false
-    t.date    "start_date",                                            default: '2015-02-20', null: false
-    t.date    "end_date",                                              default: '2015-02-20', null: false
-    t.decimal "quota_point_monetary_value",   precision: 10, scale: 0, default: 0,            null: false
+    t.string  "name",                                                                        null: false
+    t.integer "number_of_contingent",                                                        null: false
+    t.decimal "arqp_contingent_debater",     precision: 10, scale: 0,                        null: false
+    t.decimal "arqp_contingent_adjudicator", precision: 10, scale: 0,                        null: false
+    t.decimal "arqp_non_contingent",         precision: 10, scale: 0,                        null: false
+    t.string  "status",                                                                      null: false
+    t.date    "start_date",                                           default: '2015-02-20', null: false
+    t.date    "end_date",                                             default: '2015-02-20', null: false
+    t.decimal "quota_point_monetary_value",  precision: 10, scale: 0, default: 0,            null: false
   end
 
   create_table "contingents", force: true do |t|
