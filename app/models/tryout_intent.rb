@@ -3,4 +3,5 @@ class TryoutIntent < ActiveRecord::Base
 	validates :debater_position, presence: true
 	belongs_to :varsity_member
 
+	POSITION = ["Contingent Debater", "Contingent Adjudicator", "Non-contingent"]
 end
