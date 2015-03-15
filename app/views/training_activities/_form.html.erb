@@ -1,5 +1,10 @@
-<%= simple_form_for(@training_activity) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for(@training_activity, :validate => true) do |f| %>
+ 
+ <ul>
+  <% @training_activity.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+  <% end %>
+</ul>
 
   <div class="form-inputs">
     <%= f.input :name %>
