@@ -3,7 +3,7 @@ class TrainingActivity < ActiveRecord::Base
 
 	#validates_presence_of :name, :message => "Can't be blank"
 	validates :name, length: { maximum: 30}
-	validates :quota_point_value, presence: true, length: { maximum: 3 }
+	validates :quota_point_value, presence: true, length: { maximum: 5 }
 
 	validate :cannot_be_negative
 	def cannot_be_negative

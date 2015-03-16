@@ -12,7 +12,7 @@ class VarsityMember < ActiveRecord::Base
 	validates :varsity_track,  length: { maximum: 15 }, inclusion: { in: TRACK }
 	validates :debater_position,  length: { maximum: 23 }, inclusion: { in: POSITION }
 	validates :total_debt, length: { maximum: 7 }, numericality: true
-	validates :total_acquired_quota_points, length: { maximum: 3 }, numericality: true
+	validates :total_acquired_quota_points, length: { maximum: 5 }, numericality: true
 
 	has_many :debt_settlements
 	has_many :competition_debts

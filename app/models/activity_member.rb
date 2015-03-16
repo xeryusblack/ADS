@@ -9,11 +9,11 @@ class ActivityMember < ActiveRecord::Base
 	#accepts_nested_attributes_for :varsity_members
 
 	def cannot_be_negative
-		if !self.round.nil?
-	 		if self.round <= 0
-	      		errors.add(:round, "Number of rounds must not be negative or zero!")
-	    	end
-	    end
+		# if !self.round.nil?
+	 # 		if self.round <= 0
+	 #      		errors.add(:round, "Number of rounds must not be negative or zero!")
+	 #    	end
+	 #    end
 	end
 
 end

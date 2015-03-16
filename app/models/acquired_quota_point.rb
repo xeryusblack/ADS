@@ -22,7 +22,8 @@ class AcquiredQuotaPoint < ActiveRecord::Base
 
 	 def load_default
    		if self.new_record?
-   			self.amount = 0
+        ta = TrainingActivity.find(self.training_activity_id)
+        self.amount = 0.00
       end
    end
 
@@ -55,9 +56,10 @@ class AcquiredQuotaPoint < ActiveRecord::Base
 
       self.activity_members.each do |amember|
     	   
-            sum = ta.quota_point_value * amember.round
+            sum = ta.quota_point_value #* amember.round
             #self.varsity_members.each do |vmember|
             vm = VarsityMember.find(amember.varsity_member_id)
+            if vm.debater_position == "Debater"
                 aqp_total = vm.total_acquired_quota_points + sum
                 vm.update(:total_acquired_quota_points => aqp_total)
     
