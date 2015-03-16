@@ -2,22 +2,22 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :source_of_debt %>
+    <%= f.input :source_of_debt, placeholder: 'Reason for debt' %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :debt_amount %>
+    <%= f.input :debt_amount, placeholder: '0.00' %>
   </div>
 
   <div class="form-inputs">
-    <%= f.collection_select :competition_id, Competition.all, :id, :name %>
+    <%= f.collection_select :competition_id, Competition.all, :id, :name, :include_blank => false  %>
   </div>
 
   <div class="form-inputs">
-    <%= f.association :varsity_member %>
+    <%= f.association :varsity_member, :include_blank => false  %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, data: { confirm: 'Are you sure?'}%>
   </div>
 <% end %>

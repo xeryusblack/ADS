@@ -22,7 +22,7 @@ class TrainingActivitiesController < ApplicationController
     if @training_activity.save
       redirect_to training_activity_path(@training_activity.id)
     else
-      render(:template => "training_activities/index")
+      render(:template => "training_activities/new")
     end
   end
 

@@ -22,7 +22,7 @@ class CompetitionDebtsController < ApplicationController
     if @competition_debt.save
       redirect_to competition_debt_path(@competition_debt.id)
     else
-      render(:template => "competition_debts/index")
+      render(:template => "competition_debts/new")
     end
   end
 

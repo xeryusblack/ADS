@@ -11,7 +11,7 @@ class CreateVarsityMembers < ActiveRecord::Migration
       t.string :varsity_track, null: false
       t.string :debater_position, null: false, :default => "Non-contingent"
       t.decimal :total_debt, :default => 0.00
-      t.integer :total_acquired_quota_points, :default => 0
+      t.decimal :total_acquired_quota_points, :default => 0
 
       t.timestamps
     end

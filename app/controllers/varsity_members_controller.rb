@@ -22,7 +22,7 @@ class VarsityMembersController < ApplicationController
     if @varsity_member.save
       redirect_to varsity_member_path(@varsity_member.id)
     else
-      render(:template => "varsity_members/index")
+      render(:template => "varsity_members/new")
     end
   end
 

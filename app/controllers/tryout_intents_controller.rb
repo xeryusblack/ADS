@@ -22,7 +22,7 @@ class TryoutIntentsController < ApplicationController
     if @tryout_intent.save
       redirect_to tryout_intent_path(@tryout_intent.id)
     else
-      render(:template => "tryout_intents/index")
+      render(:template => "tryout_intents/new")
     end
   end
 

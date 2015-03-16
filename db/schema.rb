@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20150315063859) do
 
   create_table "acquired_quota_points", force: true do |t|
-    t.decimal "amount",               precision: 10, scale: 0, default: 0,            null: false
+    t.decimal "amount",               precision: 10, scale: 2, default: 0.00,            null: false
     t.date    "date_conducted",                                default: '2015-03-15', null: false
     t.integer "training_activity_id",                                                 null: false
   end
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150315063859) do
 
   create_table "competition_debts", force: true do |t|
     t.string  "source_of_debt",                                         null: false
-    t.decimal "debt_amount",       precision: 10, scale: 0, default: 0, null: false
+    t.decimal "debt_amount",       precision: 10, scale: 2, default: 0.00, null: false
     t.integer "competition_id",                                         null: false
     t.integer "varsity_member_id",                                      null: false
   end
@@ -42,13 +42,13 @@ ActiveRecord::Schema.define(version: 20150315063859) do
   create_table "competitions", force: true do |t|
     t.string  "name",                                                                        null: false
     t.integer "number_of_contingent",                                                        null: false
-    t.decimal "arqp_contingent_debater",     precision: 10, scale: 0,                        null: false
-    t.decimal "arqp_contingent_adjudicator", precision: 10, scale: 0,                        null: false
-    t.decimal "arqp_non_contingent",         precision: 10, scale: 0,                        null: false
+    t.decimal "arqp_contingent_debater",     precision: 10, scale: 2, default: 0.00,                       null: false
+    t.decimal "arqp_contingent_adjudicator", precision: 10, scale: 2, default: 0.00,                       null: false
+    t.decimal "arqp_non_contingent",         precision: 10, scale: 2, default: 0.00,                        null: false
     t.string  "status",                                                                      null: false
     t.date    "start_date",                                           default: '2015-03-15', null: false
     t.date    "end_date",                                             default: '2015-03-15', null: false
-    t.decimal "quota_point_monetary_value",  precision: 10, scale: 0, default: 0,            null: false
+    t.decimal "quota_point_monetary_value",  precision: 10, scale: 2, default: 0.00,            null: false
   end
 
   create_table "contingents", force: true do |t|
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20150315063859) do
   add_index "contingents", ["varsity_member_id"], name: "index_contingents_on_varsity_member_id", using: :btree
 
   create_table "debt_settlements", force: true do |t|
-    t.decimal "amount_paid",       precision: 10, scale: 0, default: 0,            null: false
+    t.decimal "amount_paid",       precision: 10, scale: 2,  default: 0.00,            null: false
     t.date    "date_paid",                                  default: '2015-03-15', null: false
     t.integer "varsity_member_id",                                                 null: false
     t.integer "officer_id",                                                        null: false
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20150315063859) do
 
   create_table "training_activities", force: true do |t|
     t.string  "name",                                                   null: false
-    t.decimal "quota_point_value", precision: 10, scale: 0, default: 0, null: false
+    t.decimal "quota_point_value", precision: 10, scale: 2, default: 0, null: false
   end
 
   create_table "tryout_intents", force: true do |t|
@@ -122,8 +122,8 @@ ActiveRecord::Schema.define(version: 20150315063859) do
     t.string   "contact_number",                                                                  null: false
     t.string   "varsity_track",                                                                   null: false
     t.string   "debater_position",                                     default: "Non-contingent", null: false
-    t.decimal  "total_debt",                  precision: 10, scale: 0, default: 0
-    t.integer  "total_acquired_quota_points",                          default: 0
+    t.decimal  "total_debt",                  precision: 10, scale: 2,  default: 0.00
+    t.decimal  "total_acquired_quota_points",                          precision: 10,  default: 0.00
     t.datetime "created_at"
     t.datetime "updated_at"
   end

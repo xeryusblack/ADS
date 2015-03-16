@@ -22,7 +22,7 @@ class ContingentsController < ApplicationController
     if @contingent.save
       redirect_to contingent_path(@contingent.id)
     else
-      render(:template => "contingents/index")
+      render(:template => "contingents/new")
     end
   end
 

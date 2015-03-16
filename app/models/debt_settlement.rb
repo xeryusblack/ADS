@@ -8,16 +8,13 @@ class DebtSettlement < ActiveRecord::Base
 	validate :cannot_be_negative
 
 	def cannot_be_negative
-	 	if self.amount_paid <= 0
-	      errors.add(:amount_paid, "Quantity must not be negative or zero!")
+		if !self.amount_paid.nil?
+	 		if self.amount_paid <= 0
+	      		errors.add(:amount_paid, "Amount must not be negative or zero!")
+	    	end
 	    end
 	end
 
-	before_validation :load_officer
-
-	def load_officer
-		self.officer_id = current_officer_in_charge.id
-  end
 
 	after_create :update_varisty_member_quota_point
 
@@ -26,8 +23,15 @@ class DebtSettlement < ActiveRecord::Base
     	sum = 0
     	vm = VarsityMember.find(self.varsity_member_id)
 
-       	sum = vm.total_acquired_quota_points - self.amount_paid
+       	sum = vm.total_debt - self.amount_paid
     
-      	user.update(:total_acquired_quota_points => sum)
+      	vm.update(:total_debt => sum)
 	end
+
+	def officer
+		officer = OfficerInCharge.find(self.officer_id)
+
+		return officer.email
+	end
+
 end

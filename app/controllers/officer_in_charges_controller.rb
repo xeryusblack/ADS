@@ -21,7 +21,7 @@ class OfficerInChargesController < ApplicationController
     if @officer_in_charge.save
       redirect_to officer_in_charge_path(@officer_in_charge.id)
     else
-      render(:template => "officer_in_charges/index")
+      render(:template => "officer_in_charges/new")
     end
   end
 

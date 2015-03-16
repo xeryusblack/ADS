@@ -22,7 +22,7 @@ class AcquiredQuotaPointsController < ApplicationController
     if @acquired_quota_point.save
       redirect_to acquired_quota_point_path(@acquired_quota_point.id)
     else
-      render(:template => "acquired_quota_points/index")
+      render(:template => "acquired_quota_points/new")
     end
   end
 

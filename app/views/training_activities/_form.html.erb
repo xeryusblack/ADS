@@ -1,20 +1,15 @@
-<%= simple_form_for(@training_activity, :validate => true) do |f| %>
- 
- <ul>
-  <% @training_activity.errors.full_messages.each do |msg| %>
-  <li><%= msg %></li>
-  <% end %>
-</ul>
+<%= simple_form_for(@training_activity) do |f| %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
+    <%= f.input :name, placeholder: '
+    Training Activity Name' %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :quota_point_value %>
+    <%= f.input_field  :quota_point_value, label: "Full quota point value", placeholder: '0.00' %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, data: { confirm: 'Are you sure?'}%>
   </div>
 <% end %>

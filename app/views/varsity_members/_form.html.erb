@@ -2,31 +2,31 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :vm_id, :label => "ID" %>
+    <%= f.input :vm_id, :label => "ID", placeholder: '100001' %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :first_name %>
+    <%= f.input :first_name, placeholder: 'Juan' %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :last_name %>
+    <%= f.input :last_name, placeholder: 'Dela Cruz' %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :year, :collection => 1..5, :as => :select %>
+    <%= f.input :year, :collection => 1..5, :as => :select, :include_blank => false %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :course %>
+    <%= f.input :course, placeholder: 'BS MIS' %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :contact_number %>
+    <%= f.input :contact_number, placeholder: '09XX-XXX-XXXX' %>
   </div>
 
   <div class="form-inputs">
-    <%= f.input :email_address %>
+    <%= f.input :email_address, placeholder: 'user@domain.com' %>
   </div>
 
   <div class="form-inputs">
@@ -34,10 +34,10 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.input :debater_position, :as => :select, :collection => VarsityMember::POSITION, :include_blank => false %>
+    <%= f.input :debater_position, :as => :select, :collection => VarsityMember::POSITION, :include_blank => false, priority: [ "Non-contingent" ] %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, data: { confirm: 'Are you sure?'}%>
   </div>
 <% end %>

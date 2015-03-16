@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
     <%= f.label 'What was the training activity done?' %>
-    <%= f.association :training_activity %>
+    <%= f.association :training_activity, :include_blank => false %>
   </div>
 
   <div class="form-inputs">
@@ -14,9 +14,10 @@
 
   <div class="form-inputs">
     <%= f.fields_for :activity_members do |ff|%>
-      <%= ff.association :varsity_member %>
+      <%= ff.association :varsity_member, :include_blank => false  %>
 
-      <%= ff.input :round %>
+      <%= ff.input :judge, as: :boolean, checked_value: true, unchecked_value: false  %>
+      <%= ff.input :article, as: :boolean, checked_value: true, unchecked_value: false  %>
       <%= ff.link_to_remove "Remove" %>
     <% end %>
     <p><%= f.link_to_add "Add a member", :activity_members %></p>

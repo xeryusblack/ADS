@@ -22,7 +22,7 @@ class DebtSettlementsController < ApplicationController
     if @debt_settlement.save
       redirect_to debt_settlement_path(@debt_settlement.id)
     else
-      render(:template => "debt_settlements/index")
+      render(:template => "debt_settlements/new")
     end
   end
 

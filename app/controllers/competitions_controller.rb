@@ -22,7 +22,7 @@ class CompetitionsController < ApplicationController
     if @competition.save
       redirect_to competition_path(@competition.id)
     else
-      render(:template => "competitions/index")
+      render(:template => "competitions/new")
     end
   end
 

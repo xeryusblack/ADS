@@ -8,8 +8,10 @@ class CompetitionDebt < ActiveRecord::Base
 	validate :cannot_be_negative
 
 	def cannot_be_negative
-	 	if self.debt_amount <= 0
-	      errors.add(:debt_amount, "Quantity must not be negative or zero!")
+		if !self.debt_amount.nil?
+	 		if self.debt_amount <= 0
+	      		errors.add(:debt_amount, "Quantity must not be negative or zero!")
+	    	end
 	    end
 	end
 
@@ -33,7 +35,7 @@ class CompetitionDebt < ActiveRecord::Base
 	def check_total_debt
     	vm = VarsityMember.find(self.varsity_member_id)
     	if vm.total_debt == 0
-    		raise "ERROR: Varsity Total Debt is already 0" 
+    		errors.add(:debt_amount, "Varsity Total Debt is already zero!")
     	end
 	end
 end
