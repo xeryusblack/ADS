@@ -64,7 +64,7 @@ class AcquiredQuotaPoint < ActiveRecord::Base
                 vm.update(:total_acquired_quota_points => aqp_total)
     
     	   #self.amount = sum
-      end
+            end
 
     	
     	# AcquiredQuotaPoint.activity_members.each do |member|
@@ -73,7 +73,8 @@ class AcquiredQuotaPoint < ActiveRecord::Base
      #   	sum = ta.quota_point_value * self.amount
     
       	#user.update(:total_acquired_quota_points => sum)
-	end
+	   end
+   end
 
   def displayAmount(member_id, training_id)
       TrainingActivity.find(self.training_activity_id).quota_point_value * ActivityMember.find(member_id).round
