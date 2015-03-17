@@ -1,6 +1,6 @@
 <h1>Listing Varsity Members</h1>
-
-<table>
+<div class="responsive">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
@@ -14,7 +14,7 @@
       <th>Debater Position</th>
       <th>Total Debt</th>
       <th>Total Acquired Quota Points</th>
-      <th colspan="11"></th>
+      <th colspan="10"></th>
     </tr>
   </thead>
 
@@ -39,10 +39,13 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
 
-<%= link_to 'New Varsity Member', new_varsity_member_path %>
+<button class="btn btn-default" type="submit"><%= link_to 'New Varsity Member', new_varsity_member_path %></button>
+
+
 
 <% @competition = Competition.find_by(status: "Ongoing") %>
 
