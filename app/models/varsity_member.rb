@@ -14,6 +14,7 @@ class VarsityMember < ActiveRecord::Base
 	validates :total_debt, length: { maximum: 7 }, numericality: true
 	validates :total_acquired_quota_points, length: { maximum: 5 }, numericality: true
 
+	
 	has_many :debt_settlements
 	has_many :competition_debts
 	has_many :acquired_quota_points, through: :activity_members
@@ -48,7 +49,7 @@ class VarsityMember < ActiveRecord::Base
 	     		errors.add(:contact_number, "Must contain valid cellphone number! (11 digits)")
 	    	end
 	    end
-
+''
 		if self.vm_id == ""
 			errors.add(:vm_id, "Cannot be blank!")
 		else

@@ -1,4 +1,5 @@
 class AcquiredQuotaPoint < ActiveRecord::Base
+
 	has_many :varsity_members, through: :activity_members
   belongs_to :training_activity
 	has_many :activity_members
@@ -48,37 +49,65 @@ class AcquiredQuotaPoint < ActiveRecord::Base
 	def calculate_amount
 
     	sum = 0
-      total = 0
+      aqp_total = 0
+      result = []
+      i = 1
+      #find point value of TA
     	ta = TrainingActivity.find(self.training_activity_id)
-    	#am = ActivityMember.find(self.training_activity_id)
-    	#vm = VarsityMember.find(self.varsity_member_id)
-        #self.varsity_member_id = am.varsity_member_id
 
       self.activity_members.each do |amember|
-    	   
-            sum = ta.quota_point_value #* amember.round
-            #self.varsity_members.each do |vmember|
-            vm = VarsityMember.find(amember.varsity_member_id)
-            if vm.debater_position == "Debater"
-                aqp_total = vm.total_acquired_quota_points + sum
-                vm.update(:total_acquired_quota_points => aqp_total)
-    
-    	   #self.amount = sum
-            end
+    	  vm = VarsityMember.find(amember.varsity_member_id)
 
-    	
-    	# AcquiredQuotaPoint.activity_members.each do |member|
-     #    	sum = user.total_purchases + self.total_amount
-    	# end
-     #   	sum = ta.quota_point_value * self.amount
-    
-      	#user.update(:total_acquired_quota_points => sum)
+        if ta.name == "Debate Round" 
+          if amember.article == true
+            if vm.debater_position == "Contingent Debater"
+              if amember.judge == true
+                sum = ta.quota_point_value/2
+                aqp_total = vm.total_acquired_quota_points + sum
+              else
+                sum = ta.quota_point_value
+                aqp_total = vm.total_acquired_quota_points + sum
+              end
+            elsif vm.debater_position == "Contingent Adjudicator"
+              if amember.judge == false
+                sum = ta.quota_point_value/2
+                aqp_total = vm.total_acquired_quota_points + sum
+              else
+                sum = ta.quota_point_value
+                aqp_total = vm.total_acquired_quota_points + sum
+              end
+            else vm.debater_position == "Non-contingent"
+              if vm.varsity_track == "Debater"
+                if amember.judge == true
+                  sum = ta.quota_point_value/2
+                  aqp_total = vm.total_acquired_quota_points + sum
+                else
+                  sum = ta.quota_point_value
+                  aqp_total = vm.total_acquired_quota_points + sum
+                end
+              elsif vm.varsity_track == "Adjudicator" 
+                if amember.judge == false
+                  sum = ta.quota_point_value/2
+                  aqp_total = vm.total_acquired_quota_points + sum
+                else
+                  sum = ta.quota_point_value
+                  aqp_total = vm.total_acquired_quota_points + sum
+              end
+              elsif vm.varsity_track == "Debater and Adjudicator"
+                sum = ta.quota_point_value
+                aqp_total = vm.total_acquired_quota_points + sum
+            end
+          end
+        else
+                sum = ta.quota_point_value
+                aqp_total = vm.total_acquired_quota_points + sum
+        end
+           vm.update(:total_acquired_quota_points => aqp_total)
+           result.push(sum)#self.amount = sum
 	   end
    end
 
-  def displayAmount(member_id, training_id)
-      TrainingActivity.find(self.training_activity_id).quota_point_value * ActivityMember.find(member_id).round
-  end
-
-
+   def displayAmount
+    return result
+   end
 end

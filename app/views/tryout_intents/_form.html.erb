@@ -6,7 +6,7 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.association :varsity_member, :include_blank => false %>
+    <%= f.association :varsity_member, :as => :collection_select, collection: VarsityMember.where("total_debt = 0"), :include_blank => false %>
   </div>
 
   <div class="form-inputs">

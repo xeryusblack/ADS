@@ -14,4 +14,18 @@ class TryoutIntent < ActiveRecord::Base
         		errors.add(:varsity_member, "Varsity Member still has debt!")
         	end
     end
+
+   	after_create :gather_members
+
+	def gather_members
+		result = []
+
+      	self.varsity_members.each do |member|
+      		result.push(member)
+        end
+	end
+
+	def tryoutMembers
+		return result
+	end
 end
