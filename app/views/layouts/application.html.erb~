@@ -69,9 +69,6 @@
                 <li>
                     <%= link_to "Tryout Intent", tryout_intents_path %></p>
                 </li>
-		<li>
-                    <%= link_to "Acquired Quota Points", acquired_quota_points_path %>
-                </li>
                 <li>
                     <%= link_to "Sign out", destroy_officer_in_charge_session_path%>
                 </li>
@@ -79,6 +76,9 @@
         </div>
 
         <% elsif @role == "Office of Finance" %>
+                <li>
+                    <%= link_to "Acquired Quota Points", acquired_quota_points_path %>
+                </li>
                 <li>
                     <%= link_to "Debt Settlements", debt_settlements_path %>
                 </li>
