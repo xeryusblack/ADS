@@ -11,7 +11,7 @@
 </p>
 
 <p>
-    <strong>Amount:</strong>
+    <strong>Quota Point Value of Training Activity:</strong>
   <%= @acquired_quota_point.amount %>
 </p>
 
@@ -29,9 +29,9 @@
     <% @acquired_quota_point.activity_members.each do |member| %>
       <tr>
         <td><%= member.varsity_member.to_s%></td>
-        <td><%= member.article%></td>
-        <td><%= member.article%></td>
-        <td><%= number_to_currency(@acquired_quota_point, :unit => "Php") %></td>
+        <td><%= member.reply(member.judge)%></td>
+        <td><%= member.reply(member.article)%></td>
+        <td><%= number_to_currency(member.amount, :unit => "Php") %></td>
 
       </tr>
     <% end %>

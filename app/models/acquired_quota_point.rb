@@ -5,7 +5,7 @@ class AcquiredQuotaPoint < ActiveRecord::Base
 	has_many :activity_members
 	accepts_nested_attributes_for :activity_members
 
-  @result = []
+
 	#validates :amount, length: { maximum: 3 }, numericality: true
 	validates :date_conducted, presence: true
 
@@ -102,17 +102,13 @@ class AcquiredQuotaPoint < ActiveRecord::Base
                 aqp_total = vm.total_acquired_quota_points + sum
         end
            vm.update(:total_acquired_quota_points => aqp_total)
-           @result.push(sum)#self.amount = sum
+           amember.update(:amount => sum)
 	   end
    end
-  end
 
-   # def displayAmount
-   #  return @result
-   # end
+  end
 
     def to_s
     self.first_name + " " + self.last_name
   end
-end
 end

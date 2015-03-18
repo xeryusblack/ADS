@@ -4,7 +4,7 @@ class Competition < ActiveRecord::Base
 	has_many :activity_members
 
 
-	STATUS = ["Ongoing", "Completed", "Upcoming", "Processing"]
+	STATUS = ["Ongoing", "Upcoming", "Processing"]
   #validation of custom always goes first
   #current_user method cannot be accessed in model
 	validates :name, length: { maximum: 30}
@@ -63,7 +63,7 @@ class Competition < ActiveRecord::Base
         errors.add(:status, "A competition is currently ongoing")
       end
 
-      # if self.status == "Completed" 
+      #if self.status == "Completed" 
       #   raise "Error: Competition is alredy completed"
       #   errors.add(:status, "Competition is alredy completed")
       # end

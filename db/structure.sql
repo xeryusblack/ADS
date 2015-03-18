@@ -29,7 +29,7 @@ CREATE TABLE `acquired_quota_points` (
   `training_activity_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_acquired_quota_points_on_training_activity_id` (`training_activity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,8 +47,9 @@ CREATE TABLE `activity_members` (
   `updated_at` datetime DEFAULT NULL,
   `judge` tinyint(1) DEFAULT NULL,
   `article` tinyint(1) DEFAULT NULL,
+  `amount` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +90,7 @@ CREATE TABLE `competitions` (
   `end_date` date NOT NULL DEFAULT '2015-02-20',
   `quota_point_monetary_value` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +108,7 @@ CREATE TABLE `contingent_members` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +122,7 @@ CREATE TABLE `contingents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tryout_intent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +170,7 @@ CREATE TABLE `officer_in_charges` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_officer_in_charges_on_email` (`email`),
   UNIQUE KEY `index_officer_in_charges_on_reset_password_token` (`reset_password_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -227,7 +228,7 @@ CREATE TABLE `training_activities` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `quota_point_value` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -242,7 +243,7 @@ CREATE TABLE `tryout_intents` (
   `date` date NOT NULL DEFAULT '2015-02-20',
   `competition_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -260,7 +261,7 @@ CREATE TABLE `tryout_members` (
   `debater_position` varchar(255) DEFAULT NULL,
   `tryout_intent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -313,11 +314,7 @@ CREATE TABLE `varsity_members` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-<<<<<<< HEAD
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
->>>>>>> 9a8dbef40a92ea477f826eac0dac6ca7ea9b1122
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -329,11 +326,7 @@ CREATE TABLE `varsity_members` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2015-03-18 12:17:55
-=======
--- Dump completed on 2015-03-18  0:50:01
->>>>>>> 9a8dbef40a92ea477f826eac0dac6ca7ea9b1122
+-- Dump completed on 2015-03-18 18:18:47
 INSERT INTO schema_migrations (version) VALUES ('20150219133018');
 
 INSERT INTO schema_migrations (version) VALUES ('20150219143539');
@@ -399,4 +392,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150318030526');
 INSERT INTO schema_migrations (version) VALUES ('20150318035559');
 
 INSERT INTO schema_migrations (version) VALUES ('20150318041632');
+
+INSERT INTO schema_migrations (version) VALUES ('20150318101533');
 
