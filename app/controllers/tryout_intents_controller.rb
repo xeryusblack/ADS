@@ -46,7 +46,7 @@ class TryoutIntentsController < ApplicationController
     @tryout_intent = TryoutIntent.find(params[:id])
     @tryout_intent.destroy!
     redirect_to tryout_intents_path
-  end
+  end 
 
   def tryout_intent_params
     params.require(:tryout_intent).permit!

@@ -1,11 +1,10 @@
-<h1>Listing Varsity Members</h1>
+<h1>Listing Tryouts</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Varsity Member</th>
       <th>Date</th>
-      <th>Debater Position</th>
+      <th>Comeptition</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -13,9 +12,8 @@
   <tbody>
     <% @tryout_intents.each do |tryout_intent| %>
       <tr>
-        <td><%= tryout_intent.varsity_member %></td>
         <td><%= tryout_intent.date %></td>
-        <td><%= tryout_intent.debater_position %></td>
+        <td><%= tryout_intent.competition.to_s %></td>
         <td><%= link_to 'Show', tryout_intent %></td>
         <td><%= link_to 'Edit', edit_tryout_intent_path(tryout_intent) %></td>
         <td><%= link_to 'Destroy', tryout_intent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,7 +25,3 @@
 <br>
 
 <%= link_to 'Register for Tryouts', new_tryout_intent_path %>
-
-<br>
-
-<%= button_to "End Tryouts", new_contingent_path, method: :get %>

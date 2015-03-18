@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :pages
 
   root 'pages#index'
+   get "/varsity_members/report", to: "varsity_members#report", as: :report_varsity_members
   resources :varsity_members
+
   resources :tryout_intents
   resources :training_activities
   resources :debt_settlements

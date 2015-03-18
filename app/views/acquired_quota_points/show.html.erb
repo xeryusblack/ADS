@@ -16,7 +16,7 @@
 </p>
 
 <p> 
-  <strong>Varsity Member:</strong> 
+  <strong>Varsity Members:</strong> 
 </p>
 
     <table style="width: 100%;">
@@ -31,7 +31,7 @@
         <td><%= member.varsity_member.to_s%></td>
         <td><%= member.article%></td>
         <td><%= member.article%></td>
-        <td><%= number_to_currency(@acquired_quota_point.displayAmount.shift, :unit => "Php") %></td>
+        <td><%= number_to_currency(@acquired_quota_point, :unit => "Php") %></td>
 
       </tr>
     <% end %>

@@ -9,8 +9,8 @@ class VarsityMember < ActiveRecord::Base
 	validates :course, length: { maximum: 15 }
 	validates :contact_number, length: { is: 11 }
 	validates :email_address,  length: { maximum: 40 }
-	validates :varsity_track,  length: { maximum: 15 }, inclusion: { in: TRACK }
-	validates :debater_position,  length: { maximum: 23 }, inclusion: { in: POSITION }
+	validates :varsity_track, inclusion: { in: TRACK }
+	validates :debater_position, inclusion: { in: POSITION }
 	validates :total_debt, length: { maximum: 7 }, numericality: true
 	validates :total_acquired_quota_points, length: { maximum: 5 }, numericality: true
 
@@ -49,7 +49,6 @@ class VarsityMember < ActiveRecord::Base
 	     		errors.add(:contact_number, "Must contain valid cellphone number! (11 digits)")
 	    	end
 	    end
-''
 		if self.vm_id == ""
 			errors.add(:vm_id, "Cannot be blank!")
 		else
@@ -60,6 +59,15 @@ class VarsityMember < ActiveRecord::Base
 	    	end
 		end
 	end
+
+	before_validation :load_default
+
+	 def load_default
+   		if self.new_record?
+        self.total_debt = 0.00
+        self.total_acquired_quota_points = 0.00
+      end
+   end
 
 
 	def to_s

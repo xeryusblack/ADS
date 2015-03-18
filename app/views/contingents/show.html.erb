@@ -1,19 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Varsity Member:</strong>
-  <%= @contingent.varsity_member %>
-</p>
-
-<p>
   <strong>Competition:</strong>
-  <%= @contingent.competition.to_s %>
+  <%= @contingent.tryout_intent.competition.to_s %>
 </p>
 
-<p>
-  <strong>Debater Position:</strong>
-  <%= @contingent.debater_position %>
+<p> 
+  <strong>Contingent Members:</strong> 
 </p>
 
+    <table style="width: 100%;">
+    <tr>
+      <th>Name</th>
+      <th>Debater Position</th>
+    </tr>
+    <% @contingent.contingent_members.each do |member| %>
+      <tr>
+        <td><%= member.tryout_member.varsity_member.to_s%></td>
+        <td><%= member.debater_position%></td>
+      </tr>
+    <% end %>
+  </table>
 <%= link_to 'Edit', edit_contingent_path(@contingent) %> |
 <%= link_to 'Back', contingents_path %>

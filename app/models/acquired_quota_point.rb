@@ -1,11 +1,11 @@
 class AcquiredQuotaPoint < ActiveRecord::Base
-
+  attr_accessor :result
 	has_many :varsity_members, through: :activity_members
   belongs_to :training_activity
 	has_many :activity_members
 	accepts_nested_attributes_for :activity_members
 
-
+  @result = []
 	#validates :amount, length: { maximum: 3 }, numericality: true
 	validates :date_conducted, presence: true
 
@@ -50,7 +50,6 @@ class AcquiredQuotaPoint < ActiveRecord::Base
 
     	sum = 0
       aqp_total = 0
-      result = []
       i = 1
       #find point value of TA
     	ta = TrainingActivity.find(self.training_activity_id)
@@ -103,11 +102,16 @@ class AcquiredQuotaPoint < ActiveRecord::Base
                 aqp_total = vm.total_acquired_quota_points + sum
         end
            vm.update(:total_acquired_quota_points => aqp_total)
-           result.push(sum)#self.amount = sum
+           @result.push(sum)#self.amount = sum
 	   end
    end
+  end
 
-   def displayAmount
-    return result
-   end
+   # def displayAmount
+   #  return @result
+   # end
+
+    def to_s
+    self.first_name + " " + self.last_name
+  end
 end

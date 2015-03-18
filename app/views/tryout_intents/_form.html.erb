@@ -1,4 +1,4 @@
-<%= simple_form_for(@tryout_intent) do |f| %>
+<%= simple_nested_form_for(@tryout_intent) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -6,11 +6,16 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.association :varsity_member, :as => :collection_select, collection: VarsityMember.where("total_debt = 0"), :include_blank => false %>
+    <%= f.association :competition, :include_blank => false %>
   </div>
 
-  <div class="form-inputs">
-    <%= f.input :debater_position, :as => :select, :collection => TryoutIntent::POSITION, :include_blank => false %>
+    <div class="form-inputs">
+    <%= f.fields_for :tryout_members do |ff|%>
+    <%= ff.association :varsity_member, :as => :collection_select, collection: VarsityMember.where("total_debt = 0") %>
+    <%= ff.input :debater_position, :as => :select, :collection => TryoutMember::POSITION, :include_blank => false %>
+      <%= ff.link_to_remove "Remove" %>
+    <% end %>
+    <p><%= f.link_to_add "Add a member", :tryout_members %></p>
   </div>
 
   <div class="form-actions">

@@ -1,26 +1,23 @@
 class Contingent < ActiveRecord::Base
-	belongs_to :competition
-	belongs_to :varsity_member
 
-	POSITION = ["Contingent Debater", "Contingent Adjudicator", "Non-contingent"]
+	has_many :varsity_members, through: :tryout_members
+	has_many :tryout_members, through: :contingent_members
+	belongs_to :tryout_intent
 
-	before_validation :load_default
+	has_many :contingent_members
+	accepts_nested_attributes_for :contingent_members
 
-	def load_default
-   		if self.new_record?
-        ta = TrainingActivity.find(self.training_activity_id)
-        self.amount = 0.00
-      end
-   end
+	
 
-	if TryoutIntent.all != nil 
+after_create :edit_vm_debater_postion
 
-		
+	def edit_vm_debater_postion
 
-	end
-
-
-
-
+      	self.contingent_members.each do |cmember|
+    	  vm = VarsityMember.find(cmember.varsity_member_id)
+    	  dp = cmember.debater_postion
+    	  vm.update(:debater_postion => dp)
+     	 end
+    end
 
 end

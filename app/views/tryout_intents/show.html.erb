@@ -1,9 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Varsity Member:</strong>
-  <%= @tryout_intent.varsity_member %>
-</p>
 
 <p>
   <strong>Date:</strong>
@@ -11,9 +7,29 @@
 </p>
 
 <p>
-  <strong>Debater Position:</strong>
-  <%= @tryout_intent.debater_position %>
+  <strong>Competition:</strong>
+  <%= @tryout_intent.competition.to_s %>
 </p>
+
+  <strong>Tryout Members:</strong> 
+</p>
+
+    <table style="width: 100%;">
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+    </tr>
+    <% @tryout_intent.tryout_members.each do |member| %>
+      <tr>
+        <td><%= member.varsity_member.to_s%></td>
+        <td><%= member.debater_position%></td>
+      </tr>
+    <% end %>
+  </table>
 
 <%= link_to 'Edit', edit_tryout_intent_path(@tryout_intent) %> |
 <%= link_to 'Back', tryout_intents_path %>
+
+<br>
+
+<%= link_to 'End Tryouts', edit_contingent_path(@tryout_intent.id) %>

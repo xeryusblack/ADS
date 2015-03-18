@@ -108,7 +108,6 @@ class Competition < ActiveRecord::Base
   def total_debt 
     temp = 0
     debt = 0
-      self.update!(status: "Completed")
       VarsityMember.all.each do |vmember|
       #vmember.activity_members.each do |amember|
          
@@ -121,8 +120,7 @@ class Competition < ActiveRecord::Base
             if temp > 0 
                 debt = temp * competition.quota_point_monetary_value
                 debt_total = vmember.total_debt + debt
-                vmember.update(:total_debt => debt_total)
-                vmember.update(:total_acquired_quota_points => 0)
+                vmember.update(:total_debt => debt_total)      
             end
         
         elsif vmember.debater_position == "Contingent Adjudicator"
@@ -132,7 +130,6 @@ class Competition < ActiveRecord::Base
                 debt = temp * competition.quota_point_monetary_value
                 debt_total = vmember.total_debt + debt
                 vmember.update(:total_debt => debt_total)
-                vmember.update(:total_acquired_quota_points => 0)
             end
 
         elsif vmember.debater_position == "Non-contingent"
@@ -142,9 +139,11 @@ class Competition < ActiveRecord::Base
                 debt = temp * competition.quota_point_monetary_value
                 debt_total = vmember.total_debt + debt
                 vmember.update(:total_debt => debt_total)
-                vmember.update(:total_acquired_quota_points => 0)
             end
         end
+          vmember.update(:total_acquired_quota_points => 0)
+          vmember.update(:debater_position => "Non-contingent")
+          self.update!(status: "Completed")
     end
 
 

@@ -1,17 +1,15 @@
-<%= simple_form_for(@contingent) do |f| %>
+<%= simple_nested_form_for(@contingent) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.association :varsity_member, :include_blank => false %>
+<% people = TryoutMember.where(tryout_intent_id = @contingent.id) %>
+    <div class="form-inputs">
+    <%= f.fields_for :contingent_members do |ff|%>
+  <%= ff.association :tryout_member, :as => :collection_select, collection: people.each, :include_blank => false %>
+    <%= ff.input :debater_position, :as => :radio_buttons, :collection => ContingentMember::POSITION, :include_blank => false %>
+      <%= ff.link_to_remove "Remove" %>
+    <% end %>
   </div>
-
-  <div class="form-inputs">
-    <%= f.association :competition, :include_blank => false %>
-  </div>
-
-  <div class="form-inputs">
-    <%= f.input :debater_position, :as => :select, :collection => Contingent::POSITION, :include_blank => false %>
-  </div>
+      <p><%= f.link_to_add "Add a member", :contingent_members %></p>
 
   <div class="form-actions">
     <%= f.button :submit, data: { confirm: 'Are you sure?'}%>

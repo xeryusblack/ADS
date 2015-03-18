@@ -6,6 +6,11 @@ class VarsityMembersController < ApplicationController
     render(:template => "varsity_members/index")
   end
 
+  def report
+    @varsity_members = VarsityMember.all 
+
+    render(:template => "varsity_members/report")
+  end
   def show
     @varsity_member = VarsityMember.find(params[:id])
   end

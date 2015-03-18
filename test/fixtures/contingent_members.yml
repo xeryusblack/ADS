@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contingent_id: 1
+  debater_position: MyString
+  tryout_member_id: 1
+
+two:
+  contingent_id: 1
+  debater_position: MyString
+  tryout_member_id: 1

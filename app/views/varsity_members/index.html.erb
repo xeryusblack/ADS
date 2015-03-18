@@ -43,12 +43,21 @@
 
 <br>
 
+<% if officer_in_charge_signed_in? %>
+    <% @role = Role.find(current_officer_in_charge.role_id) %>
+        <% if @role== "Office of Training and Varsity" %>
+          <% @competition = Competition.find_by(status: "Ongoing") %>
+
+          <% if @competition != nil %>
+          <%= button_to "End Training Session", edit_competition_path(@competition.id), method: :get %>
+        <% end %>
+        <% end %>
+      <% elsif @role == "Office of Finance" %>
+            <br>
+              <%= button_to "Generate Balance Report", edit_competition_path(@competition.id), method: :get %>
+      <% end %>
+
+
 <button class="btn btn-default" type="submit"><%= link_to 'New Varsity Member', new_varsity_member_path %></button>
 
 
-
-<% @competition = Competition.find_by(status: "Ongoing") %>
-
-<% if @competition != nil %>
-<%= button_to "End Training Session", edit_competition_path(@competition.id), method: :get %>
-<% end %>
