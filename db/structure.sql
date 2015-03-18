@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 5.6.23, for osx10.8 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.23, for osx10.10 (x86_64)
 --
 -- Host: localhost    Database: ads_development
 -- ------------------------------------------------------
@@ -90,7 +90,7 @@ CREATE TABLE `competitions` (
   `end_date` date NOT NULL DEFAULT '2015-02-20',
   `quota_point_monetary_value` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +122,7 @@ CREATE TABLE `contingents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tryout_intent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +243,7 @@ CREATE TABLE `tryout_intents` (
   `date` date NOT NULL DEFAULT '2015-02-20',
   `competition_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -261,7 +261,7 @@ CREATE TABLE `tryout_members` (
   `debater_position` varchar(255) DEFAULT NULL,
   `tryout_intent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -314,7 +314,7 @@ CREATE TABLE `varsity_members` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -326,7 +326,7 @@ CREATE TABLE `varsity_members` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-03-18 18:18:47
+-- Dump completed on 2015-03-18 21:06:10
 INSERT INTO schema_migrations (version) VALUES ('20150219133018');
 
 INSERT INTO schema_migrations (version) VALUES ('20150219143539');

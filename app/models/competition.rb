@@ -9,13 +9,13 @@ class Competition < ActiveRecord::Base
   #current_user method cannot be accessed in model
 	validates :name, length: { maximum: 30}
 	validates :number_of_contingent, length: { maximum: 3 }, numericality: true
-	validates :arqp_contingent_debater, length: { maximum: 3 }, numericality: true
-	validates :arqp_contingent_adjudicator, length: { maximum: 3 }, numericality: true
-	validates :arqp_non_contingent, length: { maximum: 3 }, numericality: true
+	validates :arqp_contingent_debater, length: { maximum: 4 }, numericality: true
+	validates :arqp_contingent_adjudicator, length: { maximum: 4 }, numericality: true
+	validates :arqp_non_contingent, length: { maximum: 4 }, numericality: true
 	validates :status, presence: true, inclusion: { in: STATUS }
 	validates :end_date, presence: true
 	validates :start_date, presence: true
-	validates :quota_point_monetary_value, length: { maximum: 3 }, numericality: true
+	validates :quota_point_monetary_value, length: { maximum: 4 }, numericality: true
 
 	validate :cannot_be_invalid
 
