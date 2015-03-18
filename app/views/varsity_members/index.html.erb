@@ -57,6 +57,6 @@
           <% end %>
         <% elsif @role == "Office of Finance" %>
             <br>
-              <%= button_to "Generate Balance Report", edit_competition_path(@competition.id), method: :get %>
+              <%= link_to "Generate Balance Report", report_varsity_members_path(:format => :pdf)%>
       <% end %>
       <% end %>

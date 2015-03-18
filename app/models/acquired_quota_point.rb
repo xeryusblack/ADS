@@ -9,16 +9,6 @@ class AcquiredQuotaPoint < ActiveRecord::Base
 	#validates :amount, length: { maximum: 3 }, numericality: true
 	validates :date_conducted, presence: true
 
-	#validate :cannot_be_negative
-
-	#accepts_nested_attributes_for :varsity_members
-
-	# def cannot_be_negative
-	#  	if self.amount <= 0
-	#       errors.add(:amount, "Quantity must not be negative or zero!")
-	#     end
-	# end
-
 	before_validation :load_default
 
 	 def load_default

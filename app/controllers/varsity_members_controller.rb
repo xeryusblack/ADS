@@ -9,10 +9,10 @@ class VarsityMembersController < ApplicationController
   def report
     @varsity_members = VarsityMember.all 
 
-    respond_to do |format|
+     respond_to do |format|
       format.html
       format.pdf do
-        render :pdf => "varsity_members/report"   # Excluding ".pdf" extension.
+        render :pdf => "report_varsity_members_path"   # Excluding ".pdf" extension.
       end
     end
   end
@@ -62,4 +62,5 @@ class VarsityMembersController < ApplicationController
   def varsity_member_params
     params.require(:varsity_member).permit!
   end
+
 end
