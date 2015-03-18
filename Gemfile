@@ -37,6 +37,10 @@ gem 'nested_form'
 
 gem 'twitter-bootstrap-rails'
 
+gem 'wkhtmltopdf-binary'
+
+gem 'wicked_pdf'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

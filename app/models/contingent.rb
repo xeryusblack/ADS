@@ -4,7 +4,7 @@ class Contingent < ActiveRecord::Base
 	has_many :tryout_members, through: :contingent_members
 	belongs_to :tryout_intent
 
-	has_many :contingent_members
+	has_many :contingent_members, :dependent => :destroy
 	accepts_nested_attributes_for :contingent_members
 
 	

@@ -15,10 +15,10 @@ class VarsityMember < ActiveRecord::Base
 	validates :total_acquired_quota_points, length: { maximum: 5 }, numericality: true
 
 	
-	has_many :debt_settlements
+	has_many :debt_settlements 
 	has_many :competition_debts
 	has_many :acquired_quota_points, through: :activity_members
-	has_many :activity_members
+	has_many :activity_members, :dependent => :destroy
 	has_many :tryout_intents
 	has_many :competitons, through: :competition_debts
 

@@ -13,8 +13,8 @@ class TryoutMember < ActiveRecord::Base
  #        	end
  #    end
 
-  	def to_s
-	 	self.varsity_member.first_name + " " + self.varsity_member.last_name
-	 end
+   	def to_s
+	  	self.varsity_member.first_name + " " + self.varsity_member.last_name
+	  end
 
 end

@@ -9,8 +9,14 @@ class VarsityMembersController < ApplicationController
   def report
     @varsity_members = VarsityMember.all 
 
-    render(:template => "varsity_members/report")
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "varsity_members/report"   # Excluding ".pdf" extension.
+      end
+    end
   end
+
   def show
     @varsity_member = VarsityMember.find(params[:id])
   end
