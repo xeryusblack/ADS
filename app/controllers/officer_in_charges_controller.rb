@@ -1,6 +1,6 @@
 class OfficerInChargesController < ApplicationController
   def index
-    @officers_in_charge = OfficerInCharge.all 
+    @officer_in_charge = OfficerInCharge.all 
 
     render(:template => "officer_in_charges/index")
   end
@@ -28,7 +28,7 @@ class OfficerInChargesController < ApplicationController
   def edit
     @officer_in_charge = OfficerInCharge.find(params[:id])
 
-    render(:templace => "officer_in_charges/edit")
+    render(:template => "officer_in_charges/edit")
   end
 
   def update

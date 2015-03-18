@@ -111,3 +111,4 @@ class AcquiredQuotaPoint < ActiveRecord::Base
     return result
    end
 end
+end
