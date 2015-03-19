@@ -34,7 +34,7 @@
           <td><%= varsity_member.total_acquired_quota_points %></td>
           <!-- <td><button class="btn btn-default" type="submit"><%= link_to 'Show', varsity_member %></button></td> -->
           <td><ul class="btn btn-default" type="submit"><%= link_to 'Edit', edit_varsity_member_path(varsity_member) %></ul></td>
-          <td><button class="btn btn-default" type="submit"><%= link_to 'Delete', varsity_member, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+          <td><ul class="btn btn-default" type="submit"><%= link_to 'Delete', varsity_member, method: :delete, data: { confirm: 'Are you sure?' } %></ul></td>
         </tr>
       <% end %>
     </tbody>
@@ -42,7 +42,7 @@
 </div>
 
 
-<button class="btn btn-default" type="submit"><%= link_to 'New Varsity Member', new_varsity_member_path %></button>
+<ul class="btn btn-default" type="submit"><%= link_to 'New Varsity Member', new_varsity_member_path %></ul>
 
 <br>
 <br>
