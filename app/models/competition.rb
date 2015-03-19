@@ -116,7 +116,7 @@ class Competition < ActiveRecord::Base
          #vm = VarsityMember.find(amember.varsity_member_id)
          if vmember.debater_position == "Contingent Debater"
 
-          temp = competition.arqp_contingent_debater - vmember.total_acquired_quota_points
+          temp = self.arqp_contingent_debater - vmember.total_acquired_quota_points
             if temp > 0 
                 debt = temp * competition.quota_point_monetary_value
                 debt_total = vmember.total_debt + debt
@@ -125,18 +125,18 @@ class Competition < ActiveRecord::Base
         
         elsif vmember.debater_position == "Contingent Adjudicator"
 
-              temp = competition.arqp_contingent_adjudicator - vmember.total_acquired_quota_points
+              temp = self.arqp_contingent_adjudicator - vmember.total_acquired_quota_points
             if temp > 0 
-                debt = temp * competition.quota_point_monetary_value
+                debt = temp * self.quota_point_monetary_value
                 debt_total = vmember.total_debt + debt
                 vmember.update(:total_debt => debt_total)
             end
 
         elsif vmember.debater_position == "Non-contingent"
 
-              temp = competition.arqp_non_contingent - vmember.total_acquired_quota_points
+              temp = self.arqp_non_contingent - vmember.total_acquired_quota_points
             if temp > 0 
-                debt = temp * competition.quota_point_monetary_value
+                debt = temp * self.quota_point_monetary_value
                 debt_total = vmember.total_debt + debt
                 vmember.update(:total_debt => debt_total)
             end

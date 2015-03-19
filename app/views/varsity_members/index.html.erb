@@ -43,8 +43,6 @@
               <% elsif @role == "Administrator"%>
                 <td><%= link_to 'Edit', edit_varsity_member_path(varsity_member), class: "btn btn-warning" %></td>
                 <td><%= link_to 'Delete', varsity_member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
-                <td><%= link_to 'Pay', edit_varsity_member_path(varsity_member), class: "btn btn-success"%></td>
-                <td><%= link_to 'Add Debt', varsity_member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
 
               <% elsif @role == "Office of Finance" %>
                 <td><%= link_to 'Pay', new_debt_settlement_path, class: "btn btn-primary"%></td>
@@ -58,7 +56,7 @@
 </div>
 
 
-<ul class="btn btn-default" type="submit"><%= link_to 'New Varsity Member', new_varsity_member_path %></ul>
+<%= link_to 'New Varsity Member', new_varsity_member_path, class: "btn btn-default" %>
 
 <br>
 <br>
@@ -69,10 +67,10 @@
           <% @competition = Competition.find_by(status: "Ongoing") %>
 
           <% if @competition != nil %>
-          <%= button_to "End Training Session", edit_competition_path(@competition.id), method: :get %>
+          <%= link_to "End Training Session", edit_competition_path(@competition.id), class: "btn btn-danger", method: :get %>
           <% end %>
         <% elsif @role == "Office of Finance" %>
             <br>
               <%= link_to "Generate Balance Report", report_varsity_members_path(:format => :pdf), class: "btn btn-primary"%>
       <% end %>
-      <% end %>
+<% end %>
