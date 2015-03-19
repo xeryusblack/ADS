@@ -6,6 +6,17 @@ class DebtSettlementsController < ApplicationController
     render(:template => "debt_settlements/index")
   end
 
+  def report
+    @debt_settlement = DebtSettlement.find(params[:id])
+
+     respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "report_varsity_members_path"   # Excluding ".pdf" extension.
+      end
+    end
+  end
+
   def show
     @debt_settlement = DebtSettlement.find(params[:id])
   end

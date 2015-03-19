@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'pages#index'
    get "/varsity_members/report", to: "varsity_members#report", as: :report_varsity_members
   resources :varsity_members
-
+   get "/debt_settlements/:id/confirm", to: "debt_settlements#confirm", as: :category_confirm
   resources :tryout_intents
   resources :training_activities
   resources :debt_settlements

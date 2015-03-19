@@ -8,7 +8,7 @@ class VarsityMember < ActiveRecord::Base
 	validates :year,  length: { is: 1 }
 	validates :course, length: { maximum: 15 }
 	validates :contact_number, length: { is: 11 }
-	validates :email_address,  length: { maximum: 40 }
+	validates :email_address,  length: { maximum: 40 }, :uniqueness => { :message => "ID number already exist" }
 	validates :varsity_track, inclusion: { in: TRACK }
 	validates :debater_position, inclusion: { in: POSITION }
 	validates :total_debt, length: { maximum: 7 }, numericality: true

@@ -6,12 +6,12 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.association :competition, :include_blank => false %>
+    <%= f.association :competition, :as => :collection_select, collection: Competiton.where("status != Completed"), :include_blank => false %>
   </div>
 
     <div class="form-inputs">
     <%= f.fields_for :tryout_members do |ff|%>
-    <%= ff.association :varsity_member, :as => :collection_select, collection: VarsityMember.where("total_debt = 0") %>
+    <%= ff.association :varsity_member, :as => :collection_select, collection: VarsityMember.where("total_debt = 0"), :include_blank => false %>
     <%= ff.input :debater_position, :as => :select, :collection => TryoutMember::POSITION, :include_blank => false %>
       <%= ff.link_to_remove "Remove" %>
     <% end %>
