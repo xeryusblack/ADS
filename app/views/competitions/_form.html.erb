@@ -22,7 +22,7 @@
   </div>
 
   <div class="form-inputs">
-    <%= f.input :status, :as => :select, priority: [ "Ongoing" ], collection: [ "Ongoing", "Upcoming", "Processing"], :label => "Status", :include_blank => false  %>
+    <%= f.input :status, :as => :select, priority: [ "Ongoing" ], :collection => Competition::STATUS, :label => "Status", :include_blank => false  %>
   </div>
 
   <div class="form-inputs">
