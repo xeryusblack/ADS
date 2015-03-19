@@ -1,0 +1,29 @@
+<h1>Listing Varsity Members</h1>
+<div class="responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th style="margin: 0 10px;">ID</th>
+        <th style="margin: 0 100px;">Last Name</th>
+        <th>Varsity Track</th>
+        <th>Debater Position</th>
+        <th>Acquired QP</th>
+        <th>Total Debt</th>
+        <th colspan="10"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @varsity_members.each do |varsity_member| %>
+        <tr>
+          <td><%= varsity_member.vm_id %></td>
+          <td><%= varsity_member.last_name %></td>
+          <td><%= varsity_member.varsity_track %></td>
+          <td><%= varsity_member.debater_position %></td>
+          <td style="text-align: right;"><%= varsity_member.total_acquired_quota_points %></td>
+          <td style="text-align: right;"><%= varsity_member.total_debt %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

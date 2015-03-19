@@ -33,8 +33,24 @@
           <td><%= varsity_member.total_debt %></td>
           <td><%= varsity_member.total_acquired_quota_points %></td>
           <!-- <td><button class="btn btn-default" type="submit"><%= link_to 'Show', varsity_member %></button></td> -->
-          <td><ul class="btn btn-default" type="submit"><%= link_to 'Edit', edit_varsity_member_path(varsity_member) %></ul></td>
-          <td><ul class="btn btn-default" type="submit"><%= link_to 'Delete', varsity_member, method: :delete, data: { confirm: 'Are you sure?' } %></ul></td>
+          <% if officer_in_charge_signed_in? %>
+              <% @role = Role.find(current_officer_in_charge.role_id).name %>
+              
+              <% if @role == "Office of Training and Varsity"%>
+                <td><%= link_to 'Edit', edit_varsity_member_path(varsity_member), class: "btn btn-warning" %></td>
+                <td><%= link_to 'Delete', varsity_member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+
+              <% elsif @role == "Administrator"%>
+                <td><%= link_to 'Edit', edit_varsity_member_path(varsity_member), class: "btn btn-warning" %></td>
+                <td><%= link_to 'Delete', varsity_member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+                <td><%= link_to 'Pay', edit_varsity_member_path(varsity_member), class: "btn btn-success"%></td>
+                <td><%= link_to 'Add Debt', varsity_member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
+
+              <% elsif @role == "Office of Finance" %>
+                <td><%= link_to 'Pay', new_debt_settlement_path, class: "btn btn-primary"%></td>
+                <td><%= link_to 'Add Debt', varsity_member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+              <% end %>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
@@ -57,6 +73,6 @@
           <% end %>
         <% elsif @role == "Office of Finance" %>
             <br>
-              <%= link_to "Generate Balance Report", report_varsity_members_path(:format => :pdf)%>
+              <%= link_to "Generate Balance Report", report_varsity_members_path(:format => :pdf), class: "btn btn-primary"%>
       <% end %>
       <% end %>

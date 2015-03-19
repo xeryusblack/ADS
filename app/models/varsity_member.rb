@@ -23,7 +23,7 @@ class VarsityMember < ActiveRecord::Base
 	has_many :competitons, through: :competition_debts
 
 	validate :cannot_be_wrong
-
+	
 	def cannot_be_wrong
 
 		if self.first_name == "" 
