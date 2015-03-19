@@ -8,7 +8,6 @@ class AcquiredQuotaPointsController < ApplicationController
 
   def show
     @acquired_quota_point = AcquiredQuotaPoint.find(params[:id])
-    @result = @acquired_quota_point.result
   end
 
   def new
