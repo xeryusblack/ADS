@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.23, for osx10.10 (x86_64)
 --
 -- Host: localhost    Database: ads_development
 -- ------------------------------------------------------
--- Server version	5.5.37-0ubuntu0.13.10.1
+-- Server version	5.6.23
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `acquired_quota_points`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `acquired_quota_points` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `amount` decimal(10,0) NOT NULL DEFAULT '0',
+  `amount` decimal(10,2) DEFAULT NULL,
   `date_conducted` date NOT NULL DEFAULT '2015-02-20',
   `training_activity_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_acquired_quota_points_on_training_activity_id` (`training_activity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,7 @@ CREATE TABLE `activity_members` (
   `article` tinyint(1) DEFAULT NULL,
   `amount` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ DROP TABLE IF EXISTS `competition_debts`;
 CREATE TABLE `competition_debts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `source_of_debt` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `debt_amount` decimal(10,0) NOT NULL DEFAULT '0',
+  `debt_amount` decimal(10,2) DEFAULT NULL,
   `competition_id` int(11) NOT NULL,
   `varsity_member_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -82,15 +82,15 @@ CREATE TABLE `competitions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `number_of_contingent` int(11) NOT NULL,
-  `arqp_contingent_debater` decimal(10,0) NOT NULL,
-  `arqp_contingent_adjudicator` decimal(10,0) NOT NULL,
-  `arqp_non_contingent` decimal(10,0) NOT NULL,
+  `arqp_contingent_debater` decimal(10,2) DEFAULT NULL,
+  `arqp_contingent_adjudicator` decimal(10,2) DEFAULT NULL,
+  `arqp_non_contingent` decimal(10,2) DEFAULT NULL,
   `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `start_date` date NOT NULL DEFAULT '2015-02-20',
   `end_date` date NOT NULL DEFAULT '2015-02-20',
-  `quota_point_monetary_value` decimal(10,0) NOT NULL DEFAULT '0',
+  `quota_point_monetary_value` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,12 +103,12 @@ DROP TABLE IF EXISTS `contingent_members`;
 CREATE TABLE `contingent_members` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `contingent_id` int(11) DEFAULT NULL,
-  `debater_position` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `debater_position` varchar(255) DEFAULT NULL,
   `tryout_member_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +122,7 @@ CREATE TABLE `contingents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tryout_intent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,14 +134,14 @@ DROP TABLE IF EXISTS `debt_settlements`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `debt_settlements` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `amount_paid` decimal(10,0) NOT NULL DEFAULT '0',
+  `amount_paid` decimal(10,2) DEFAULT NULL,
   `date_paid` date NOT NULL DEFAULT '2015-02-20',
   `varsity_member_id` int(11) NOT NULL,
   `officer_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_debt_settlements_on_varsity_member_id` (`varsity_member_id`),
   KEY `index_debt_settlements_on_officer_id` (`officer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +170,7 @@ CREATE TABLE `officer_in_charges` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_officer_in_charges_on_email` (`email`),
   UNIQUE KEY `index_officer_in_charges_on_reset_password_token` (`reset_password_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -226,9 +226,9 @@ DROP TABLE IF EXISTS `training_activities`;
 CREATE TABLE `training_activities` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `quota_point_value` decimal(10,0) NOT NULL DEFAULT '0',
+  `quota_point_value` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +243,7 @@ CREATE TABLE `tryout_intents` (
   `date` date NOT NULL DEFAULT '2015-02-20',
   `competition_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -258,10 +258,10 @@ CREATE TABLE `tryout_members` (
   `varsity_member_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `debater_position` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `debater_position` varchar(255) DEFAULT NULL,
   `tryout_intent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -309,12 +309,12 @@ CREATE TABLE `varsity_members` (
   `contact_number` varchar(255) NOT NULL,
   `varsity_track` varchar(255) NOT NULL,
   `debater_position` varchar(255) NOT NULL DEFAULT 'Non-contingent',
-  `total_debt` decimal(10,0) DEFAULT '0',
-  `total_acquired_quota_points` int(11) DEFAULT '0',
+  `total_debt` decimal(10,2) DEFAULT NULL,
+  `total_acquired_quota_points` decimal(10,2) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -326,7 +326,7 @@ CREATE TABLE `varsity_members` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-03-18 22:46:19
+-- Dump completed on 2015-03-19  2:46:43
 INSERT INTO schema_migrations (version) VALUES ('20150219133018');
 
 INSERT INTO schema_migrations (version) VALUES ('20150219143539');

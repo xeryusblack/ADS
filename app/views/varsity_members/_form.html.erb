@@ -1,6 +1,10 @@
 <%= simple_form_for(@varsity_member) do |f| %>
   <%= f.error_notification %>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
   <div class="form-inputs">
     <%= f.input :vm_id, :label => "ID", placeholder: '100001' %>
   </div>
@@ -40,4 +44,8 @@
   <div class="form-actions">
     <%= f.button :submit, data: { confirm: 'Are you sure?'}%>
   </div>
+
+    </div>
+  </div> 
+</div>
 <% end %>

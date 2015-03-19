@@ -22,6 +22,8 @@
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
 
+    <link href="css/ads.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -41,7 +43,7 @@
               <% @role = Role.find(current_officer_in_charge.role_id).name %>
 
               <li>
-                <p style="color: white;">ATENEO DEBATE SOCIETY</p>
+                <p style="color: white;">Ateneo Debate Society</p>
               </li>
               
 
@@ -55,16 +57,16 @@
 
         <% if @role== "Office of Training and Varsity" %>
                 <li>
+                    <%= link_to "Varsity Members", varsity_members_path %>
+                </li>   
+                <li>
+                    <%= link_to "Competitions", competitions_path %>
+                </li>                             
+                <li>
                     <%= link_to "Contingents", contingents_path %>
                 </li>
                 <li>
-                    <%= link_to "Competitions", competitions_path %>
-                </li>
-                <li>
                     <%= link_to "Training Activities", training_activities_path %>
-                </li>
-                <li>
-                    <%= link_to "Varsity Members", varsity_members_path %>
                 </li>
                 <li>
                     <%= link_to "Tryout Intent", tryout_intents_path %></p>
