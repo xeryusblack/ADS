@@ -4,7 +4,7 @@ class Competition < ActiveRecord::Base
 	has_many :activity_members
 
 
-	STATUS = ["Ongoing", "Upcoming", "Processing"]
+	STATUS = ["Ongoing", "Upcoming", "Processing", "Completed"]
   #validation of custom always goes first
   #current_user method cannot be accessed in model
 	validates :name, length: { maximum: 30}

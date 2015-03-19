@@ -5,15 +5,15 @@ class CompetitionDebt < ActiveRecord::Base
 	validates :debt_amount, length: { maximum: 3 }, numericality: true
 	validates :source_of_debt, presence: true
 
-	validate :cannot_be_negative
+	# validate :cannot_be_negative
 
-	def cannot_be_negative
-		if !self.debt_amount.nil?
-	 		if self.debt_amount <= 0
-	      		errors.add(:debt_amount, "Quantity must not be negative or zero!")
-	    	end
-	    end
-	end
+	# def cannot_be_negative
+	# 	if !self.debt_amount.nil?
+	#  		if self.debt_amount <= 0
+	#       		errors.add(:debt_amount, "Quantity must not be negative or zero!")
+	#     	end
+	#     end
+	# end
 
 	after_create :update_varisty_member_competition_debt
 

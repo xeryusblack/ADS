@@ -4,7 +4,6 @@ class ActivityMember < ActiveRecord::Base
 	belongs_to :competition
 	
 	validates :varsity_member_id, presence: :true
-	validate :cannot_be_negative
 
 	#accepts_nested_attributes_for :varsity_members
 
