@@ -12,14 +12,13 @@ Rails.application.routes.draw do
   resources :competitions
   resources :contingents
   resources :acquired_quota_points
+  resources :competition_debts
 
-  devise_for :officer_in_charges
+  devise_for :officer_in_charges, :skip => [:registrations] 
 
 devise_scope :officer_in_charges do
-    get "signup", to: "devise/registrations#new"
-    get "/signin" => "devise/sessions#new"
-    post "/signin" => "devise/sessions#create"
-    delete "/logout" => "devise/sessions#destroy"
+get 'debate' => 'devise/registrations#new', :as => :new_officer_in_charges_registration 
+post 'debate' => 'devise/registrations#create', :as => :officer_in_charges_registration
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
