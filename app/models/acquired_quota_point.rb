@@ -1,12 +1,11 @@
 class AcquiredQuotaPoint < ActiveRecord::Base
-  attr_accessor :result
 	has_many :varsity_members, through: :activity_members
   belongs_to :training_activity
 	has_many :activity_members
 	accepts_nested_attributes_for :activity_members
 
 
-	#validates :amount, length: { maximum: 3 }, numericality: true
+	validates :amount, length: { maximum: 3 }, numericality: true
 	validates :date_conducted, presence: true
 
 	before_validation :load_default
