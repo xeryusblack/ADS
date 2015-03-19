@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 -- MySQL dump 10.13  Distrib 5.5.41, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: ads_development
 -- ------------------------------------------------------
 -- Server version	5.5.41-0ubuntu0.14.04.1
-=======
--- MySQL dump 10.13  Distrib 5.6.23, for osx10.10 (x86_64)
---
--- Host: localhost    Database: ads_development
--- ------------------------------------------------------
--- Server version	5.6.23
->>>>>>> f4869d5d26dd294aebd943c2b7a5df8633778cfc
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +29,7 @@ CREATE TABLE `acquired_quota_points` (
   `training_activity_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_acquired_quota_points_on_training_activity_id` (`training_activity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,11 +49,7 @@ CREATE TABLE `activity_members` (
   `article` tinyint(1) DEFAULT NULL,
   `amount` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`id`)
-<<<<<<< HEAD
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
->>>>>>> f4869d5d26dd294aebd943c2b7a5df8633778cfc
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,11 +90,7 @@ CREATE TABLE `competitions` (
   `end_date` date NOT NULL DEFAULT '2015-02-20',
   `quota_point_monetary_value` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
->>>>>>> f4869d5d26dd294aebd943c2b7a5df8633778cfc
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,11 +108,7 @@ CREATE TABLE `contingent_members` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
->>>>>>> f4869d5d26dd294aebd943c2b7a5df8633778cfc
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,11 +122,7 @@ CREATE TABLE `contingents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tryout_intent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-<<<<<<< HEAD
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
->>>>>>> f4869d5d26dd294aebd943c2b7a5df8633778cfc
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,11 +141,7 @@ CREATE TABLE `debt_settlements` (
   PRIMARY KEY (`id`),
   KEY `index_debt_settlements_on_varsity_member_id` (`varsity_member_id`),
   KEY `index_debt_settlements_on_officer_id` (`officer_id`)
-<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
->>>>>>> f4869d5d26dd294aebd943c2b7a5df8633778cfc
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,7 +170,7 @@ CREATE TABLE `officer_in_charges` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_officer_in_charges_on_email` (`email`),
   UNIQUE KEY `index_officer_in_charges_on_reset_password_token` (`reset_password_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -271,11 +243,7 @@ CREATE TABLE `tryout_intents` (
   `date` date NOT NULL DEFAULT '2015-02-20',
   `competition_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-<<<<<<< HEAD
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
->>>>>>> f4869d5d26dd294aebd943c2b7a5df8633778cfc
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -293,11 +261,7 @@ CREATE TABLE `tryout_members` (
   `debater_position` varchar(255) DEFAULT NULL,
   `tryout_intent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
->>>>>>> f4869d5d26dd294aebd943c2b7a5df8633778cfc
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -350,11 +314,7 @@ CREATE TABLE `varsity_members` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-<<<<<<< HEAD
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
->>>>>>> f4869d5d26dd294aebd943c2b7a5df8633778cfc
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -366,11 +326,7 @@ CREATE TABLE `varsity_members` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2015-03-19 17:30:47
-=======
--- Dump completed on 2015-03-19  2:46:43
->>>>>>> f4869d5d26dd294aebd943c2b7a5df8633778cfc
+-- Dump completed on 2015-03-19 20:28:28
 INSERT INTO schema_migrations (version) VALUES ('20150219133018');
 
 INSERT INTO schema_migrations (version) VALUES ('20150219143539');

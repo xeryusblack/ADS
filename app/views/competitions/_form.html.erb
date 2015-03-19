@@ -27,12 +27,12 @@
 
   <div class="form-inputs">
     <%= f.label :start_date, "Start Date" %>
-    <%= f.date_select :start_date %>
+    <%= f.date_select :start_date, selected: Date.today %>
   </div>
 
   <div class="form-inputs">
     <%= f.label :end_date, "End Date" %>
-    <%= f.date_select :end_date %>
+    <%= f.date_select :end_date, selected: Date.today %>
   </div>
 
   <div class="form-inputs">

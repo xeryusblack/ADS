@@ -18,6 +18,7 @@ class Competition < ActiveRecord::Base
 	validates :quota_point_monetary_value, length: { maximum: 4 }, numericality: true
 
 	validate :cannot_be_invalid
+  validate :date_validation
 
 	def cannot_be_invalid
     if self.name == "" 
@@ -152,5 +153,11 @@ class Competition < ActiveRecord::Base
   def to_s
     self.name
   end 
+
+  def date_validation
+    if end_date <= start_date
+      errors.add(:start_date, "Date is inconsistent")
+    end
+  end
 
 end
