@@ -6,7 +6,7 @@ class DebtSettlementsController < ApplicationController
     render(:template => "debt_settlements/index")
   end
 
-  def report
+  def confirmation
     @debt_settlement = DebtSettlement.find(params[:id])
 
      respond_to do |format|
@@ -29,8 +29,9 @@ class DebtSettlementsController < ApplicationController
 
   def create
     @debt_settlement = DebtSettlement.new(debt_settlement_params)
-
+    @user = VarsityMember.find(@debt_settlement.varsity_member_id)
     if @debt_settlement.save
+      UserMailer.confirmation_email(@user).deliver!
       redirect_to debt_settlement_path(@debt_settlement.id)
     else
       render(:template => "debt_settlements/new")

@@ -15,7 +15,7 @@ class DebtSettlement < ActiveRecord::Base
 
 	    	vm = VarsityMember.find(self.varsity_member_id)
 
-	    	if self.amount_paid >= vm.total_debt
+	    	if self.amount_paid > vm.total_debt
 	      		errors.add(:amount_paid, "Amount paid is greater than debt!")
 	    	end
 	    end
