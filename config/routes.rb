@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   devise_for :officer_in_charges, :skip => [:registrations] 
 
-devise_scope :officer_in_charges do
+devise_scope :officer_in_charge do
 get 'debate' => 'devise/registrations#new', :as => :new_officer_in_charges_registration 
 post 'debate' => 'devise/registrations#create', :as => :officer_in_charges_registration
 end
