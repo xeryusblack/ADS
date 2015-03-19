@@ -7,7 +7,7 @@ class ActivityMember < ActiveRecord::Base
 
 	#accepts_nested_attributes_for :varsity_members
 
-	before_validation :load_default
+	#before_validation :load_default
 
 	 def load_default
    		if self.new_record?

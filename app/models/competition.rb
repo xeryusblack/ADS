@@ -18,6 +18,7 @@ class Competition < ActiveRecord::Base
 	validates :quota_point_monetary_value, length: { maximum: 4 }, numericality: true
 
 	validate :cannot_be_invalid
+  validate :date_validation
 
 	def cannot_be_invalid
     if self.name == "" 
@@ -112,13 +113,13 @@ class Competition < ActiveRecord::Base
       #vmember.activity_members.each do |amember|
          
          #competition = Competition.find(amember.competition_id)
-         competition = Competition.find_by(status: "Processing")
+         #competition = Competition.find_by(status: "Processing")
          #vm = VarsityMember.find(amember.varsity_member_id)
          if vmember.debater_position == "Contingent Debater"
 
           temp = self.arqp_contingent_debater - vmember.total_acquired_quota_points
             if temp > 0 
-                debt = temp * competition.quota_point_monetary_value
+                debt = temp * self.quota_point_monetary_value
                 debt_total = vmember.total_debt + debt
                 vmember.update(:total_debt => debt_total)      
             end
@@ -152,5 +153,11 @@ class Competition < ActiveRecord::Base
   def to_s
     self.name
   end 
+
+  def date_validation
+    if end_date <= start_date
+      errors.add(:start_date, "Date is inconsistent")
+    end
+  end
 
 end
