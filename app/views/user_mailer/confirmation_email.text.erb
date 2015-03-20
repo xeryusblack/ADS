@@ -1,12 +1,16 @@
-Good Day <%= @user.to_s %>!
+Greetings <%= @user.to_s %>,
 ===============================================
  
  Your payment has been  successfully made!
       
-The amount you paid is: Php <%= @debt.amount %>.
- 
-Your remaining total debt is: Php <%= @user.total_debt %>
+Amount Paid: Php <%= @debt.amount_paid %>
 
-If you have any concerns please email: <%= @officer.email %>
+Date Paid: Php <%= @debt.date_paid %>.
+ 
+Remaining Debt: Php <%= @user.total_debt %>
+
+Officer-In-Charge: <%= @officer.email %>
+
+Should there be any need for clarifications or corrections, contact: <%= @officer.email %>
 
 Thank You for your prompt payment and have a great day!

@@ -9,18 +9,19 @@ class VarsityMembersController < ApplicationController
   def email_report
     @varsity_members = VarsityMember.all
     @role = Role.find_by(name: "Administrator")
-    @admin = OfficerInCharge.find_by(@role.id)
+    @officer = OfficerInCharge.find_by(role_id: @role.id)
+    @admin = OfficerInCharge.find(@officer.id)
     @pdf
     respond_to do |format|
       format.html
       format.pdf do
-        @pdf = render_to_string :pdf => 'MyPDF', 
+        @pdf = render_to_string :pdf => 'MyPDF'#{}"report_varsity_members_path", 
         :template   => 'varsity_members/email_report.pdf.erb'  # Excluding ".pdf" extension.
     end
   end
 
     UserMailer.report_email(@admin, @pdf).deliver!
-    render(:template => "varsity_members/index")
+    #render(:template => "varsity_members/index")
     flash[:notice] = 'Email has been sent!'
   end
 

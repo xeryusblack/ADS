@@ -6,17 +6,25 @@
   <body>
     <h1>Good Day <%= @user.to_s %>!</h1>
     <p>
-      Your payment has been  successfully made!<p>
+      This is to acknowledge the payment you have made:<p>
       <br>
-      <p>The amount you paid is: <strong>Php <%= @debt.amount %></strong>
+      <p>Amount Paid: <strong>Php <%= @debt.amount_paid %></strong>
+    </p>
+      <br>
+      <p>Date Paid: <strong>Php <%= @debt.date_paid %></strong>
     </p>
     <br>
-      <p>Your remaining total debt is: <strong>Php <%= @user.total_debt %></strong>
+      <p>Remaining Debt: <strong>Php <%= @user.total_debt %></strong>
     </p>
     <br>
     <p>
-      If you have any concerns please email <%= @officer.email %>
+      Officer-In-Charge: <strong><%= @officer.email %></strong>
     </p>
+    <br>
+    <p>
+      Should there be any need for clarifications or corrections, contact: <%= @officer.email %>
+    </p>
+    <br>
     <p>Thank You for your prompt payment and have a great day!</p>
   </body>
 </html>

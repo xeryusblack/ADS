@@ -14,13 +14,13 @@ Rails.application.routes.draw do
   resources :contingents
   resources :acquired_quota_points
   resources :competition_debts
+  devise_for :officer_in_charges, :path_names => { :sign_up => "debate" }
+  # devise_for :officer_in_charges, :skip => [:registrations] 
 
-  devise_for :officer_in_charges, :skip => [:registrations] 
-
-  devise_scope :officer_in_charge do
-    get 'debate' => 'devise/registrations#new', :as => :new_officer_in_charges_registration 
-    post 'debate' => 'devise/registrations#create', :as => :officer_in_charges_registration
-  end
+  # devise_scope :officer_in_charge do
+  #   get 'debate' => 'devise/registrations#new', :as => :new_officer_in_charge_registration 
+  #   post 'debate' => 'devise/registrations#create', :as => :officer_in_charge_registration
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
