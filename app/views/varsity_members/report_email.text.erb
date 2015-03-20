@@ -1,0 +1,15 @@
+Listing Varsity Members
+
+        Varsity Track
+        Debater Position
+        Acquired QP
+        Total Debt
+
+      <% @varsity_members.each do |varsity_member| %>
+         <%= varsity_member.vm_id %>
+         <%= varsity_member.last_name %>
+         <%= varsity_member.varsity_track %>
+         <%= varsity_member.debater_position %>
+         style="text-align: right;"><%= varsity_member.total_acquired_quota_points %>
+         style="text-align: right;"><%= varsity_member.total_debt %>
+      <% end %>
