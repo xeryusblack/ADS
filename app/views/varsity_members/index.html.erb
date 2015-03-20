@@ -72,5 +72,7 @@
         <% elsif @role == "Office of Finance" %>
             <br>
               <%= link_to "Generate Balance Report", report_varsity_members_path(:format => :pdf), class: "btn btn-primary"%>
+              <%= link_to "Email Balance 
+              Report", email_report_varsity_members_path(:format => :pdf), class: "btn btn-primary"%>
       <% end %>
 <% end %>
