@@ -4,15 +4,19 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to example.com, <%= @user.to_s %></h1>
+    <h1>Good Day <%= @user.to_s %>!</h1>
     <p>
-      Your payment has been  successfully made!
+      Your payment has been  successfully made!<p>
       <br>
-      The amount you paid is: Php <%= @user.total_debt %>.<br>
+      <p>The amount you paid is: <strong>Php <%= @debt.amount %></strong>
     </p>
+    <br>
+      <p>Your remaining total debt is: <strong>Php <%= @user.total_debt %></strong>
+    </p>
+    <br>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      If you have any concerns please email <%= @officer.email %>
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p>Thank You for your prompt payment and have a great day!</p>
   </body>
 </html>

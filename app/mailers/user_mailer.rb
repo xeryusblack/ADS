@@ -1,9 +1,10 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "projectmasterdebater@gmail.com"
 
-    def confirmation_email(user)
+    def confirmation_email(user, debt, officer)
     @user = user
-    @url  = 'http://example.com/login'
+    @debt = debt
+    @officer = officer
     mail(to: @user.email_address, subject: 'Payment Confirmation')
   end
 end

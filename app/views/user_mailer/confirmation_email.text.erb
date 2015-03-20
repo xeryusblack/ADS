@@ -1,9 +1,12 @@
-Welcome to example.com, <%= @user.to_s %>
+Good Day <%= @user.to_s %>!
 ===============================================
  
-      Your payment has been  successfully made!
-      The amount you paid is: Php <%= @user.total_debt %>.
+ Your payment has been  successfully made!
+      
+The amount you paid is: Php <%= @debt.amount %>.
  
-To login to the site, just follow this link: <%= @url %>.
- 
-Thanks for joining and have a great day!
+Your remaining total debt is: Php <%= @user.total_debt %>
+
+If you have any concerns please email: <%= @officer.email %>
+
+Thank You for your prompt payment and have a great day!
