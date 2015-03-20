@@ -34,122 +34,132 @@
 </head>
 
 <body>
+    <% if officer_in_charge_signed_in? %>
+        <% @role = Role.find(current_officer_in_charge.role_id).name %>
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
 
-    <div id="wrapper">
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
+                  
 
-              <% if officer_in_charge_signed_in? %>
-              <% @role = Role.find(current_officer_in_charge.role_id).name %>
+                  <li>
+                    <p style="color: white;">Ateneo Debate Society</p>
+                  </li>
+                  
 
-              <li>
-                <p style="color: white;">Ateneo Debate Society</p>
-              </li>
-              
+                  <p style="color: white; padding-left: 6.5%;">
+                    <strong>Email</strong>: <%=current_officer_in_charge.email%>
+                  </p>
 
-              <p style="color: white; padding-left: 6.5%;">
-                <strong>Email</strong>: <%=current_officer_in_charge.email%>
-              </p>
+                  <p style="color: white; padding-left: 6.5%;">
+                    <strong>User Type</strong>: <%= @role%>
+                  </p>
 
-              <p style="color: white; padding-left: 6.5%;">
-                <strong>User Type</strong>: <%= @role%>
-              </p>
+            <% if @role== "Office of Training and Varsity" %>
+                    <li>
+                        <%= link_to "Varsity Members", varsity_members_path %>
+                    </li>   
+                    <li>
+                        <%= link_to "Competitions", competitions_path %>
+                    </li>                             
+                    <li>
+                        <%= link_to "Contingents", contingents_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Training Activities", training_activities_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Tryout Intent", tryout_intents_path %>
+                    </li>
+    		        <li>
+                        <%= link_to "Acquired Quota Points", acquired_quota_points_path %>
+                    </li>
+                    <li style="margin-top: 95%;">
+                        <%= link_to "Sign out", destroy_officer_in_charge_session_path%>
+                    </li>
+                    <%= image_tag("logo_orange.png", :alt => "") %>
+                </ul>
+            </div>
 
-        <% if @role== "Office of Training and Varsity" %>
-                <li>
-                    <%= link_to "Varsity Members", varsity_members_path %>
-                </li>   
-                <li>
-                    <%= link_to "Competitions", competitions_path %>
-                </li>                             
-                <li>
-                    <%= link_to "Contingents", contingents_path %>
-                </li>
-                <li>
-                    <%= link_to "Training Activities", training_activities_path %>
-                </li>
-                <li>
-                    <%= link_to "Tryout Intent", tryout_intents_path %>
-                </li>
-		        <li>
-                    <%= link_to "Acquired Quota Points", acquired_quota_points_path %>
-                </li>
-                <li style="margin-top: 95%;">
-                    <%= link_to "Sign out", destroy_officer_in_charge_session_path%>
-                </li>
-                <img src="logo_orange.png" alt="">
-            </ul>
-        </div>
+            <% elsif @role == "Office of Finance" %>
+                    <li>
+                        <%= link_to "Debt Settlements", debt_settlements_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Varsity Members", varsity_members_path %>
+                    </li>
+                    <li style="margin-top: 167%;">
+                        <%= link_to "Sign out", destroy_officer_in_charge_session_path%>
+                    </li>
+                    <%= image_tag("logo_orange.png", :alt => "") %>
+                </ul>
+            </div>
 
-        <% elsif @role == "Office of Finance" %>
-                <li>
-                    <%= link_to "Debt Settlements", debt_settlements_path %>
-                </li>
-                <li>
-                    <%= link_to "Varsity Members", varsity_members_path %>
-                </li>
-                <li style="margin-top: 167%;">
-                    <%= link_to "Sign out", destroy_officer_in_charge_session_path%>
-                </li>
-                <img src="logo_orange.png" alt="">
-            </ul>
-        </div>
+            <% elsif @role == "Administrator" %>
+                    <li>
+                        <%= link_to "Acquired Quota Points", acquired_quota_points_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Debt Settlements", debt_settlements_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Contingents", contingents_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Competitions", competitions_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Training Activities", training_activities_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Varsity Members", varsity_members_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Tryout Intent", tryout_intents_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Create New Account", new_officer_in_charges_registration_path %>
+                    </li>
+                    <li style="margin-top: 71%;">
+                        <%= link_to "Sign out", destroy_officer_in_charge_session_path %>
+                    </li>
+                    <%= image_tag("logo_orange.png", :alt => "") %>
+                </ul>
+            </div>
 
-        <% elsif @role == "Administrator" %>
-                <li>
-                    <%= link_to "Acquired Quota Points", acquired_quota_points_path %>
-                </li>
-                <li>
-                    <%= link_to "Debt Settlements", debt_settlements_path %>
-                </li>
-                <li>
-                    <%= link_to "Contingents", contingents_path %>
-                </li>
-                <li>
-                    <%= link_to "Competitions", competitions_path %>
-                </li>
-                <li>
-                    <%= link_to "Training Activities", training_activities_path %>
-                </li>
-                <li>
-                    <%= link_to "Varsity Members", varsity_members_path %>
-                </li>
-                <li>
-                    <%= link_to "Tryout Intent", tryout_intents_path %>
-                </li>
-                <li>
-                    <%= link_to "Create New Account", new_officer_in_charges_registration_path %>
-                </li>
-                <li style="margin-top: 71%;">
-                    <%= link_to "Sign out", destroy_officer_in_charge_session_path %>
-                </li>
-                <img src="logo_orange.png" alt="">
-            </ul>
-        </div>
+            <% end %>
 
-        <% end %>
+            
+            <!-- /#sidebar-wrapper -->
 
-        <% else %>
-          <li>
-            <p><%= link_to "Login", new_officer_in_charge_session_path %></p>
-          </li>
-        <% end %>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <%= yield %> 
-                        <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a> -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <%= yield %> 
+                            <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a> -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
+            <!-- /#page-content-wrapper -->
 
-    </div>
+        </div>
+
+    <% else %>
+        <body style="background-color: black;">
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4">
+                <p style="text-align: center; margin-top: 30%;"><%= image_tag("logo_orange.jpg", :alt => "") %></p>
+                <%= yield %> 
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </body>
+          
+    <% end %>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
