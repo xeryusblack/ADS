@@ -127,8 +127,39 @@
                 </ul>
             </div>
 
-            <% end %>
+        <% elsif @role == "Administrator" %>
+                <li>
+                    <%= link_to "Acquired Quota Points", acquired_quota_points_path %>
+                </li>
+                <li>
+                    <%= link_to "Debt Settlements", debt_settlements_path %>
+                </li>
+                <li>
+                    <%= link_to "Contingents", contingents_path %>
+                </li>
+                <li>
+                    <%= link_to "Competitions", competitions_path %>
+                </li>
+                <li>
+                    <%= link_to "Training Activities", training_activities_path %>
+                </li>
+                <li>
+                    <%= link_to "Varsity Members", varsity_members_path %>
+                </li>
+                <li>
+                    <%= link_to "Tryout Intent", tryout_intents_path %>
+                </li>
+                <li>
+                    <%= link_to "Create New Account", new_officer_in_charges_registration %>
+                </li>
+                <li style="margin-top: 71%;">
+                    <%= link_to "Sign out", destroy_officer_in_charge_session_path %>
+                </li>
+                <img src="logo_orange.png" alt="">
+            </ul>
+        </div>
 
+        <% end %>
             
             <!-- /#sidebar-wrapper -->
 

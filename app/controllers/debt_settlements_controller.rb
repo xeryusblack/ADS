@@ -30,8 +30,9 @@ class DebtSettlementsController < ApplicationController
   def create
     @debt_settlement = DebtSettlement.new(debt_settlement_params)
     @user = VarsityMember.find(@debt_settlement.varsity_member_id)
+    @officer = OfficerInCharge.find(@debt_settlement.officer_id)
     if @debt_settlement.save
-      UserMailer.confirmation_email(@user).deliver!
+      UserMailer.confirmation_email(@user, @debt_settlement, @officer).deliver!
       redirect_to debt_settlement_path(@debt_settlement.id)
     else
       render(:template => "debt_settlements/new")
