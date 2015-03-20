@@ -1,12 +1,17 @@
 <%= simple_nested_form_for(@tryout_intent) do |f| %>
   <%= f.error_notification %>
 
+<% if Competition.find_by(status: "Ongoing") == nil || Competition.find_by(status: "Upcoming") == nil %>
+
+  <p> There is no ongoing competition! </p>
+  <% else %>
+
   <div class="form-inputs">
     <%= f.date_select :date %>
   </div>
 
   <div class="form-inputs">
-    <%= f.association :competition, :as => :collection_select, collection: Competiton.where("status != Completed"), :include_blank => false %>
+    <%= f.association :competition, :as => :collection_select, collection: Competition.where("status != 'Completed'"), :include_blank => false %>
   </div>
 
     <div class="form-inputs">
@@ -22,3 +27,5 @@
     <%= f.button :submit, data: { confirm: 'Are you sure?'}%>
   </div>
 <% end %>
+<% end %>
+
