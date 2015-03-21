@@ -20,8 +20,8 @@
           <td><%= varsity_member.last_name %></td>
           <td><%= varsity_member.varsity_track %></td>
           <td><%= varsity_member.debater_position %></td>
-          <td style="text-align: right;"><%= varsity_member.total_acquired_quota_points %></td>
-          <td style="text-align: right;"><%= varsity_member.total_debt %></td>
+          <td style= "text-align: right;"><%= number_with_precision(varsity_member.total_acquired_quota_points, precision: 2, delimiter: ',') %></td>
+          <td style= "text-align: right;"><%= number_to_currency(varsity_member.total_debt, :unit => "Php") %></td>
         </tr>
       <% end %>
     </tbody>

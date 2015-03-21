@@ -1,7 +1,7 @@
 <%= simple_nested_form_for(@tryout_intent) do |f| %>
   <%= f.error_notification %>
 
-<% if Competition.find_by(status: "Ongoing") == nil || Competition.find_by(status: "Upcoming") == nil %>
+<% if Competition.find_by(status: "Ongoing") == nil && Competition.find_by(status: "Upcoming") == nil %>
 
   <p> There is no ongoing competition! </p>
   <% else %>
