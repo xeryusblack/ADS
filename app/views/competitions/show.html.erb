@@ -11,18 +11,18 @@
 </p>
 
 <p>
-  <strong>Contingent Debater:</strong>
-  <%= @competition.arqp_contingent_debater %>
+  <strong>Required Quota Points for Contingent Debater:</strong>
+  <%= number_with_precision(@competition.arqp_contingent_debater, precision: 2, delimiter: ',') %>
 </p>
 
 <p>
-  <strong>Contingent Adjudicator:</strong>
-  <%= @competition.arqp_contingent_adjudicator %>
+  <strong>Required Quota Points for Contingent Adjudicator:</strong>
+  <%= number_with_precision(@competition.arqp_contingent_adjudicator, precision: 2, delimiter: ',') %>
 </p>
 
 <p>
-  <strong>Non-Contingent:</strong>
-  <%= @competition.arqp_non_contingent %>
+  <strong>Required Quota Points for Non-Contingent:</strong>
+  <%= number_with_precision(@competition.arqp_non_contingent, precision: 2, delimiter: ',') %>
 </p>
 
 <p>
@@ -38,6 +38,11 @@
 <p>
   <strong>End Date:</strong>
   <%= @competition.end_date %>
+</p>
+
+<p>
+  <strong>Quota Point Monetary Value:</strong>
+  <%= number_to_currency(@competition.quota_point_monetary_value, :unit => "Php") %>
 </p>
 
 <%= link_to 'Edit', edit_competition_path(@competition) %> |

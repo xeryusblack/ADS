@@ -7,7 +7,7 @@
   <% else %>
 
   <div class="form-inputs">
-    <%= f.date_select :date %>
+    <%= f.date_select :date, :selected => Date.today, :order => [ :day, :month, :year] %>
   </div>
 
   <div class="form-inputs">

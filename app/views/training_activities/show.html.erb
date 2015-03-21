@@ -7,7 +7,7 @@
 
 <p>
   <strong>Quota Point Value:</strong>
-  <%= @training_activity.quota_point_value %> 
+  <%= number_with_precision(@training_activity.quota_point_value, precision: 2, delimiter: ',') %> 
 </p>
 
 <%= link_to 'Edit', edit_training_activity_path(@training_activity) %> |

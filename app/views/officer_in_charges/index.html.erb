@@ -1,2 +1,25 @@
-<h1>OfficersInCharge#index</h1>
-<p>Find me in app/views/officers_in_charge/index.html.erb</p>
+<h1>Officers In Charge</h1>
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Last Sign In Session</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @officer_in_charges.each do |officer| %>
+      <tr>
+        <td><%= officer.email %></td>
+        <td><%= officer.last_sign_in_at %></td>
+        <td><%= officer.role.name %></td>
+        <td><%= link_to 'Destroy', officer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to "Create New Account", new_officer_in_charge_registration_path %>

@@ -1,4 +1,4 @@
-<h1>Listing Varsity Members</h1>
+<h1>Listing Contingents</h1>
 
 <table class="table table-stripped">
   <thead>
@@ -14,7 +14,6 @@
         <td><%= contingent.tryout_intent.competition %></td>
         <td><%= link_to 'Show', contingent %></td>
         <td><%= link_to 'Edit', edit_contingent_path(contingent) %></td>
-        <td><%= link_to 'Destroy', contingent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

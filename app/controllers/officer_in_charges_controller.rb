@@ -1,6 +1,6 @@
 class OfficerInChargesController < ApplicationController
   def index
-    @officer_in_charge = OfficerInCharge.all 
+    @officer_in_charges = OfficerInCharge.all 
 
     render(:template => "officer_in_charges/index")
   end

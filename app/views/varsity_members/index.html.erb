@@ -30,8 +30,8 @@
           <td><%= varsity_member.email_address %></td>
           <td><%= varsity_member.varsity_track %></td>
           <td><%= varsity_member.debater_position %></td>
-          <td><%= varsity_member.total_debt %></td>
-          <td><%= varsity_member.total_acquired_quota_points %></td>
+          <td style= "text-align: right;"><%= number_to_currency(varsity_member.total_debt, :unit => "Php") %></td>
+          <td style= "text-align: right;"><%= number_with_precision(varsity_member.total_acquired_quota_points, precision: 2, delimiter: ',') %></td>
           <!-- <td><button class="btn btn-default" type="submit"><%= link_to 'Show', varsity_member %></button></td> -->
           <% if officer_in_charge_signed_in? %>
               <% @role = Role.find(current_officer_in_charge.role_id).name %>
@@ -46,7 +46,7 @@
 
               <% elsif @role == "Office of Finance" %>
                 <td><%= link_to 'Pay', new_debt_settlement_path, class: "btn btn-primary"%></td>
-                <td><%= link_to 'Add Debt', varsity_member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+                <td><%= link_to 'Add Debt', new_competition_debt_path(), class: "btn btn-danger" %></td>
               <% end %>
           <% end %>
         </tr>

@@ -17,7 +17,7 @@
 
 <p>
   <strong>Amount Paid: PHP </strong>
-  <%= @debt_settlement.amount_paid %>
+  <%= number_to_currency(@debt_settlement.amount_paid, :unit => "Php") %>
 </p>
 
 <%= link_to 'Back', debt_settlements_path %>

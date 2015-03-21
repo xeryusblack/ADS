@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :contingents
   resources :acquired_quota_points
   resources :competition_debts
+  
   devise_for :officer_in_charges, :path_names => { :sign_up => "debate" }
   # devise_for :officer_in_charges, :skip => [:registrations] 
 

@@ -7,7 +7,7 @@
 
   <div class="form-inputs">
     <%= f.label :date_paid, "Date Paid" %>
-    <%= f.date_select :date_paid %>
+    <%= f.date_select :date_paid, :selected => Date.today, :order => [ :day, :month, :year] %>
   </div>
 
   <div class="form-inputs">
