@@ -13,9 +13,9 @@
     <% @officer_in_charges.each do |officer| %>
       <tr>
         <td><%= officer.email %></td>
+        <td><%= Role.find(officer.role_id).name %></td>
         <td><%= officer.last_sign_in_at %></td>
-        <td><%= officer.role.name %></td>
-        <td><%= link_to 'Destroy', officer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <!--<td><%= link_to 'Delete', destroy_officer_in_charge_path(officer.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>-->
       </tr>
     <% end %>
   </tbody>

@@ -1,49 +1,14 @@
 class OfficerInChargesController < ApplicationController
+    skip_authorization_check
   def index
     @officer_in_charges = OfficerInCharge.all 
 
     render(:template => "officer_in_charges/index")
   end
 
-  def show
-    @officer_in_charge = OfficerInCharge.find(params[:id])
-  end
-
-  def new
-    @officer_in_charge = OfficerInCharge.new
-
-    render(:template => "officer_in_charges/new")
-  end
-
-  def create
-    @officer_in_charge = OfficerInCharge.new(officer_in_charge_params)
-
-    if @officer_in_charge.save
-      redirect_to officer_in_charge_path(@officer_in_charge.id)
-    else
-      render(:template => "officer_in_charges/new")
-    end
-  end
-
-  def edit
-    @officer_in_charge = OfficerInCharge.find(params[:id])
-
-    render(:template => "officer_in_charges/edit")
-  end
-
-  def update
-    @officer_in_charge = OfficerInCharge.find(params[:id])
-
-    if @officer_in_charge.update(officer_in_charge_params)
-      redirect_to officer_in_charge_path(@officer_in_charge)
-    else
-      render(:template => "officer_in_charges/edit")
-    end
-  end
-
   def destroy
     @officer_in_charge = OfficerInCharge.find(params[:id])
-    @officer_in_charge.destroy!
+    OfficerInCharge.where(:id => @officer_in_charge.id).destroy_all
     redirect_to officer_in_charges_path
   end
 
