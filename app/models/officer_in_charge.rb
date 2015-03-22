@@ -4,7 +4,7 @@ class OfficerInCharge < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-         has_and_belongs_to_many :roles
+         belongs_to :roles
 
     def role?(role)
     	if Role.find(self.role_id).name == role

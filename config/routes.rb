@@ -15,15 +15,17 @@ Rails.application.routes.draw do
   resources :acquired_quota_points
   resources :competition_debts
   #resources :officer_in_charges
+  devise_for :officer_in_charges #, :path_names => { :sign_up => "debate" }
+  devise_scope :officer_in_charge do
+     get 'debate' => 'devise/registrations#new', :as => :new_officer_in_charges_registration 
+     post 'debate' => 'devise/registrations#create', :as => :officer_in_charges_registration
+  end
+  match '/officer_in_charges/:id' => 'officer_in_charges#destroy', :via => :delete, :as => :admin_destroy_user
+  #match 'users/:id' => 'users#show', as: :user# devise_for :officer_in_charges, :skip => [:registrations] 
   get "/officer_in_charges/index", to: "officer_in_charges#index", as: :officer_in_charges
-  delete "/officer_in_charges/:id", :to => "officer_in_charges#destroy", as: :destroy_officer_in_charge
-  devise_for :officer_in_charges, :path_names => { :sign_up => "debate" }
-  # devise_for :officer_in_charges, :skip => [:registrations] 
+  get "/officer_in_charges/make", to: "officer_in_charges#make", as: :make_officer_in_charges
+  #delete "/officer_in_charges/:id", :to => "officer_in_charges#destroy", as: :destroy_officer_in_charge
 
-  # devise_scope :officer_in_charge do
-  #   get 'debate' => 'devise/registrations#new', :as => :new_officer_in_charge_registration 
-  #   post 'debate' => 'devise/registrations#create', :as => :officer_in_charge_registration
-  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
