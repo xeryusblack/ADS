@@ -8,13 +8,13 @@
     <p>
       This is to acknowledge the payment you have made:<p>
       <br>
-      <p>Amount Paid: <strong>Php <%= @debt.amount_paid %></strong>
+      <p>Amount Paid: <strong><%= number_to_currency( @debt.amount_paid, :unit => "Php") %></strong>
     </p>
       <br>
       <p>Date Paid: <strong>Php <%= @debt.date_paid %></strong>
     </p>
     <br>
-      <p>Remaining Debt: <strong>Php <%= @user.total_debt %></strong>
+      <p>Remaining Debt: <strong><%= number_to_currency(@user.total_debt - @debt.amount_paid, :unit => "Php") %></strong>
     </p>
     <br>
     <p>
@@ -26,5 +26,9 @@
     </p>
     <br>
     <p>Thank You for your prompt payment and have a great day!</p>
+    <br>
+    <h3>ADS: Project Master Debater</h3>
+    <h4>Quota Point and Debt Tracking System</h4>
+
   </body>
 </html>

@@ -23,7 +23,7 @@ class CompetitionDebt < ActiveRecord::Base
     	#vm.total_acquired_quota_points*
 
     	vm = VarsityMember.find(self.varsity_member_id)
-    	if vm.total_debt != 0
+    	if vm.total_debt >= 0
        		sum = vm.total_debt + self.debt_amount 
        		vm.update(:total_debt => sum)
 
