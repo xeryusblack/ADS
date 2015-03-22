@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Date Paid:</strong>
   <%= @debt_settlement.date_paid %>
@@ -20,4 +18,4 @@
   <%= number_to_currency(@debt_settlement.amount_paid, :unit => "Php") %>
 </p>
 
-<%= link_to 'Back', debt_settlements_path %>
+<%= link_to 'Back', debt_settlements_path, class: "btn btn-warning" %>
