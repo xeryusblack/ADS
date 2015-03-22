@@ -6,7 +6,7 @@
       <th>Date Paid</th>
       <th>Varsity Member</th>
       <th>Officer-in-Charge</th>
-      <th>Amount Paid</th>
+      <th style="text-align: right">Amount Paid</th>
     </tr>
   </thead>
 
@@ -24,4 +24,10 @@
 
 <br>
 
-<%= link_to 'New Debt Settlement', new_debt_settlement_path, class: "btn btn-warning" %>
+<% if officer_in_charge_signed_in? %>
+      <% @role = Role.find(current_officer_in_charge.role_id).name %>
+
+      <% if @role == "Office of Finance"%>
+        <%= link_to 'New Debt Settlement', new_debt_settlement_path, class: "btn btn-warning" %>
+      <% end %>
+<% end %>

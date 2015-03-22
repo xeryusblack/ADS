@@ -15,5 +15,5 @@
   <%= number_to_currency(@competition_debt.debt_amount, :unit => "Php") %>
 </p>
 
-<%= link_to 'Edit', edit_competition_debt_path(@competition_debt) %> |
-<%= link_to 'Back', competition_debts_path %>
+<%= link_to 'Edit', edit_competition_debt_path(@competition_debt), class: "btn btn-warning" %> |
+<%= link_to 'Back', competition_debts_path, class: "btn btn-default" %>

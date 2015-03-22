@@ -13,9 +13,17 @@
     <% @training_activities.each do |training_activity| %>
       <tr>
         <td><%= training_activity.name %></td>
-        <td style= "text-align: right;"><%= number_with_precision(training_activity.quota_point_value, precision: 2, delimiter: ',') %></td>
-        <td><%= link_to 'Show', training_activity, class: "btn btn-primary" %></td>
-        <td><%= link_to 'Edit', edit_training_activity_path(training_activity), class: "btn btn-warning" %></td>
+        <td><%= number_with_precision(training_activity.quota_point_value, precision: 2, delimiter: ',') %></td>
+        <td style= "text-align: right;"><%= link_to 'Show', training_activity, class: "btn btn-primary" %></td>
+
+        <% if officer_in_charge_signed_in? %>
+              <% @role = Role.find(current_officer_in_charge.role_id).name %>
+
+              <% if @role == "Office of Training and Varsity"%>
+                  <td><%= link_to 'Edit', edit_training_activity_path(training_activity), class: "btn btn-warning" %></td>
+              <% end %>
+        <% end %>
+
         <% if training_activity.name != "Debate Round" %>
         <td><%= link_to 'Delete', training_activity, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger" %></td>
         <% end %>
@@ -26,4 +34,12 @@
 
 <br>
 
-<%= link_to 'New Training Activity', new_training_activity_path, class: "btn btn-default" %>
+<% if officer_in_charge_signed_in? %>
+      <% @role = Role.find(current_officer_in_charge.role_id).name %>
+
+      <% if @role == "Office of Training and Varsity"%>
+          <%= link_to 'New Training Activity', new_training_activity_path, class: "btn btn-default" %>
+      <% end %>
+<% end %>
+
+

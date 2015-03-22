@@ -27,9 +27,16 @@
     <% end %>
   </table>
 
-<%= link_to 'Edit', edit_tryout_intent_path(@tryout_intent) %> |
-<%= link_to 'Back', tryout_intents_path %>
+<%= link_to 'Edit', edit_tryout_intent_path(@tryout_intent), class: "btn btn-default" %>
+<%= link_to 'Back', tryout_intents_path, class: "btn btn-default" %>
 
 <br>
 
-<%= link_to 'End Tryouts', edit_contingent_path(@tryout_intent.id) %>
+<% if officer_in_charge_signed_in? %>
+      <% @role = Role.find(current_officer_in_charge.role_id).name %>
+
+      <% if @role == "Office of Training and Varsity"%>
+          <p style="margin-top: 1%;"><%= link_to 'End Tryouts', edit_contingent_path(@tryout_intent.id), class: "btn btn-danger" %></p>
+      <% end %>
+<% end %>
+

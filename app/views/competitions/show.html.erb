@@ -45,5 +45,5 @@
   <%= number_to_currency(@competition.quota_point_monetary_value, :unit => "Php") %>
 </p>
 
-<%= link_to 'Edit', edit_competition_path(@competition) %> |
-<%= link_to 'Back', competitions_path %>
+<%= link_to 'Edit', edit_competition_path(@competition), class: "btn btn-default" %>
+<%= link_to 'Back', competitions_path, class: "btn btn-default" %>

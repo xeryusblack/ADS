@@ -10,5 +10,5 @@
   <%= number_with_precision(@training_activity.quota_point_value, precision: 2, delimiter: ',') %> 
 </p>
 
-<%= link_to 'Edit', edit_training_activity_path(@training_activity) %> |
-<%= link_to 'Back', training_activities_path %>
+<%= link_to 'Edit', edit_training_activity_path(@training_activity), class: "btn btn-default" %>
+<%= link_to 'Back', training_activities_path, class: "btn btn-default" %>

@@ -18,9 +18,9 @@
     <%= f.fields_for :tryout_members do |ff|%>
     <%= ff.association :varsity_member, :as => :collection_select, collection: VarsityMember.where("total_debt = 0"), :include_blank => false %>
     <%= ff.input :debater_position, :as => :select, :collection => TryoutMember::POSITION, :include_blank => false %>
-      <%= ff.link_to_remove "Remove" %>
+      <p style="margin-bottom: 1%;"><%= ff.link_to_remove "Remove" , class: "btn btn-danger" %></p>
     <% end %>
-    <p><%= f.link_to_add "Add a member", :tryout_members %></p>
+    <p><%= f.link_to_add "Add a member", :tryout_members, class: "btn btn-default" %></p>
   </div>
 
   <div class="form-actions">

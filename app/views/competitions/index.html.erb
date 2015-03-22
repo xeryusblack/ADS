@@ -4,14 +4,14 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Number of Contingent</th>
-      <th>Required QP for CD</th>
-      <th>Required QP for CA</th>
-      <th>Required QP for NC</th>
+      <th style= "text-align: right;">Number of Contingent</th>
+      <th style= "text-align: right;">Required QP for CD</th>
+      <th style= "text-align: right;">Required QP for CA</th>
+      <th style= "text-align: right;">Required QP for NC</th>
       <th>Status</th>
       <th>Start Date</th>
       <th>End Date</th>
-      <th>Quota Point Monetary Value</th>
+      <th style= "text-align: right;">Quota Point Monetary Value</th>
       <th colspan="9"></th>
     </tr>
   </thead>
@@ -29,7 +29,15 @@
         <td><%= competition.end_date %></td>
         <td style= "text-align: right;"><%= number_to_currency(competition.quota_point_monetary_value, :unit => "Php") %></td>
         <td><%= link_to 'Show', competition, class: "btn btn-primary" %></td>
-        <td><%= link_to 'Edit', edit_competition_path(competition), class: "btn btn-warning" %></td>
+
+        <% if officer_in_charge_signed_in? %>
+              <% @role = Role.find(current_officer_in_charge.role_id).name %>
+
+              <% if @role == "Office of Training and Varsity"%>
+                  <td><%= link_to 'Edit', edit_competition_path(competition), class: "btn btn-warning" %></td>
+              <% end %>
+        <% end %>
+
         <td><%= link_to 'Delete', competition, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
@@ -38,4 +46,11 @@
 
 <br>
 
-<%= link_to 'New Competition', new_competition_path, class: "btn btn-default" %>
+<% if officer_in_charge_signed_in? %>
+      <% @role = Role.find(current_officer_in_charge.role_id).name %>
+
+      <% if @role == "Office of Training and Varsity"%>
+          <%= link_to 'New Competition', new_competition_path, class: "btn btn-default" %>
+      <% end %>
+<% end %>
+

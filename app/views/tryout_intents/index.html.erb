@@ -5,7 +5,7 @@
     <tr>
       <th>Date</th>
       <th>Comeptition</th>
-      <th colspan="2"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -15,8 +15,16 @@
         <td><%= tryout_intent.date %></td>
         <td><%= tryout_intent.competition.to_s %></td>
         <td><%= link_to 'Show', tryout_intent, class: "btn btn-primary" %></td>
-        <td><%= link_to 'Edit', edit_tryout_intent_path(tryout_intent), class: "btn btn-warning" %></td>
-        <td><%= link_to 'Delete', tryout_intent, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+
+        <% if officer_in_charge_signed_in? %>
+              <% @role = Role.find(current_officer_in_charge.role_id).name %>
+
+              <% if @role == "Office of Training and Varsity"%>
+                  <td><%= link_to 'Edit', edit_tryout_intent_path(tryout_intent), class: "btn btn-warning" %></td>
+                  <td><%= link_to 'Delete', tryout_intent, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+              <% end %>
+        <% end %>
+
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +32,12 @@
 
 <br>
 
-<%= link_to 'Register for Tryouts', new_tryout_intent_path, class: "btn btn-default" %>
+<% if officer_in_charge_signed_in? %>
+      <% @role = Role.find(current_officer_in_charge.role_id).name %>
+
+      <% if @role == "Office of Training and Varsity"%>
+          <%= link_to 'Register for Tryouts', new_tryout_intent_path, class: "btn btn-default" %>
+      <% end %>
+<% end %>
+
+

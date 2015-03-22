@@ -12,8 +12,8 @@
         <th>E-mail Address</th>
         <th>Varsity Track</th>
         <th>Debater Position</th>
-        <th>Total Debt</th>
-        <th>Total Acquired Quota Points</th>
+        <th style= "text-align: right;">Total Debt</th>
+        <th style= "text-align: right;">Total Acquired Quota Points</th>
         <th colspan="10"></th>
       </tr>
     </thead>
@@ -37,10 +37,6 @@
               <% @role = Role.find(current_officer_in_charge.role_id).name %>
               
               <% if @role == "Office of Training and Varsity"%>
-                <td><%= link_to 'Edit', edit_varsity_member_path(varsity_member), class: "btn btn-warning" %></td>
-                <td><%= link_to 'Delete', varsity_member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
-
-              <% elsif @role == "Administrator"%>
                 <td><%= link_to 'Edit', edit_varsity_member_path(varsity_member), class: "btn btn-warning" %></td>
                 <td><%= link_to 'Delete', varsity_member, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
 

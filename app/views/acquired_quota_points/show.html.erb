@@ -19,7 +19,7 @@
   <strong>Varsity Members:</strong> 
 </p>
 
-    <table style="width: 100%;">
+    <table style="width: 100%;" class="table table-stripped">
     <tr>
       <th>Name</th>
       <th>Article</th>
@@ -31,10 +31,10 @@
         <td><%= member.varsity_member.to_s%></td>
         <td><%= member.reply(member.judge)%></td>
         <td><%= member.reply(member.article)%></td>
-        <td style= "text-align: right;"><%= number_to_currency(member.amount, :unit => "Php") %></td>
+        <td><%= number_to_currency(member.amount, :unit => "Php") %></td>
 
       </tr>
     <% end %>
   </table>
 
-<%= link_to 'Back', acquired_quota_points_path %>
+<%= link_to 'Back', acquired_quota_points_path, class: "btn btn-default" %>

@@ -6,10 +6,10 @@
     <%= f.fields_for :contingent_members do |ff|%>
   <%= ff.association :tryout_member, :as => :collection_select, collection: people.each, :include_blank => false %>
     <%= ff.input :debater_position, :as => :radio_buttons, :collection => ContingentMember::POSITION, :include_blank => false %>
-      <%= ff.link_to_remove "Remove" %>
+      <p style="margin-bottom: 1%;"><%= ff.link_to_remove "Remove", class: "btn btn-danger" %></p>
     <% end %>
   </div>
-      <p><%= f.link_to_add "Add a member", :contingent_members %></p>
+      <p><%= f.link_to_add "Add a member", :contingent_members, class: "btn btn-default" %></p>
 
   <div class="form-actions">
     <%= f.button :submit, data: { confirm: 'Are you sure?'}%>
