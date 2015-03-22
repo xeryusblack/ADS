@@ -7,10 +7,10 @@
       <%= f.input :amount_paid, placeholder: '0.00' %>
     </div>
 
-    <div class="form-inputs">
-      <%= f.label :date_paid, "Date Paid" %><br>
-      <%= f.date_select :date_paid, :selected => Date.today, :order => [ :day, :month, :year] %>
-    </div>
+  <div class="form-inputs">
+    <%= f.label :date_paid, "Date Paid" %>
+    <%= f.date_select :date_paid, :selected => Date.today, :order => [ :day, :month, :year] %>
+  </div>
 
     <div class="form-inputs">
       <%= f.association :varsity_member, :as => :collection_select, collection: VarsityMember.where("total_debt != 0"), :include_blank => false %>
