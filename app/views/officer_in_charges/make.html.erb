@@ -1,17 +1,23 @@
-<h2>Sign up</h2>
+<body style="background-color: black;">
+    <div class="col-lg-2">
+    </div>
+    <div class="col-lg-6">
+        <p style="text-align: center; margin-top: 0%;"><%= image_tag("logo_orange.jpg", :alt => "") %></p>
+        <%= simple_form_for(resource, as: resource_name, url: officer_in_charge_registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
 
-<%= simple_form_for(resource, :as => resource_name, :url => officer_in_charge_registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true, placeholder: 'Email', label: false %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable), placeholder: 'Password', label: false %>
-    <%= f.input :password_confirmation, required: true, placeholder: 'Re-type Password', label: false %>
-    <p style="text-align: center;"><%= f.collection_select(:role_id, Role.all, :id, :name) %></p>
-  </div>
-<br>
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up", class: "btn btn-primary btn-md btn-block" %>
-  </div>
-<% end %>
-
+          <div class="form-inputs">
+            <%= f.input :email, required: true, autofocus: true, placeholder: 'Email', label: false %>
+            <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable), placeholder: 'Password', label: false %>
+            <%= f.input :password_confirmation, required: true, placeholder: 'Re-type Password', label: false %>
+            <p style="text-align: center;"><%= f.collection_select(:role_id, Role.all, :id, :name) %></p>
+          </div>
+        <br>
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", class: "btn btn-primary btn-md btn-block" %>
+          </div>
+        <% end %>
+    </div>
+    <div class="col-lg-4">
+    </div>
+</body>
