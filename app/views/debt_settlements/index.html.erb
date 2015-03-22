@@ -5,9 +5,8 @@
     <tr>
       <th>Date Paid</th>
       <th>Varsity Member</th>
-      <th>Officer</th>
+      <th>Officer-in-Charge</th>
       <th>Amount Paid</th>
-      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -18,8 +17,6 @@
         <td><%= debt_settlement.varsity_member %></td>
         <td><%= debt_settlement.officer %></td>
         <td style= "text-align: right;"><%= number_to_currency(debt_settlement.amount_paid, :unit => "Php") %></td>
-        <td><%= link_to 'Show', debt_settlement %></td>
-        <td><%= link_to 'Destroy', debt_settlement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Debt Settlement', new_debt_settlement_path %>
+<%= link_to 'New Debt Settlement', new_debt_settlement_path, class: "btn btn-warning" %>

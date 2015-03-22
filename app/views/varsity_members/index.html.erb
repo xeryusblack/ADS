@@ -55,8 +55,13 @@
   </table>
 </div>
 
+<% if officer_in_charge_signed_in? %>
+      <% @role = Role.find(current_officer_in_charge.role_id).name %>
 
-<%= link_to 'New Varsity Member', new_varsity_member_path, class: "btn btn-default" %>
+      <% if @role == "Office of Training and Varsity"%>
+        <%= link_to 'New Varsity Member', new_varsity_member_path, class: "btn btn-default" %>
+      <% end %>
+<% end %>
 
 <br>
 <br>
