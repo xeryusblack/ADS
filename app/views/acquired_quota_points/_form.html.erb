@@ -9,11 +9,7 @@
   <div class="form-inputs">
 
     <%= f.label 'Date Conducted' %>
-<<<<<<< HEAD
-    <%= f.date_select :date_conducted, selected: Date.today %>
-=======
     <%= f.date_select :date_conducted, :selected => Date.today, :order => [ :day, :month, :year]%>
->>>>>>> 90e1052ade7f1ca80afcfd4eb5685805006dfccc
   </div>
 
 
