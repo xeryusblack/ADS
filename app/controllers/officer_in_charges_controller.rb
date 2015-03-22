@@ -8,11 +8,11 @@ class OfficerInChargesController < ApplicationController
 
   def make
 
-  redirect_to destroy_officer_in_charge_session_path
-  if !officer_in_charge_signed_in?
-    redirect_to new_officer_in_charge_registration_path
-    #render(:template => "/debate")
-  end
+  #redirect_to destroy_officer_in_charge_session_path
+  #if !officer_in_charge_signed_in?
+    #redirect_to make_officer_in_charges_path
+    render(:template => "/officer_in_charges/make")
+  #end
 
   end
 
