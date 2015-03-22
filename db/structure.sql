@@ -90,7 +90,7 @@ CREATE TABLE `competitions` (
   `end_date` date NOT NULL DEFAULT '2015-02-20',
   `quota_point_monetary_value` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +141,7 @@ CREATE TABLE `debt_settlements` (
   PRIMARY KEY (`id`),
   KEY `index_debt_settlements_on_varsity_member_id` (`varsity_member_id`),
   KEY `index_debt_settlements_on_officer_id` (`officer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -326,7 +326,7 @@ CREATE TABLE `varsity_members` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-03-19 20:28:28
+-- Dump completed on 2015-03-19 23:31:35
 INSERT INTO schema_migrations (version) VALUES ('20150219133018');
 
 INSERT INTO schema_migrations (version) VALUES ('20150219143539');
