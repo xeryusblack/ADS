@@ -15,7 +15,14 @@
         <td><%= officer.email %></td>
         <td><%= Role.find(officer.role_id).name %></td>
         <td><%= officer.last_sign_in_at %></td>
-        <td><%= link_to 'Delete', admin_destroy_user_path(officer), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+
+        <% if officer.email == "admin@ads.com" %>
+          <td><%= link_to 'Delete', admin_destroy_user_path(officer), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger disabled" %></td>
+
+        <% else %>
+          <td><%= link_to 'Delete', admin_destroy_user_path(officer), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <% end %>
+
       </tr>
     <% end %>
   </tbody>
