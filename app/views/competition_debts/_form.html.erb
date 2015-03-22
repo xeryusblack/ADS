@@ -10,6 +10,7 @@
   </div>
 
   <div class="form-inputs">
+    <%= f.label :competition_id, "Competition" %> <br>
     <%= f.collection_select :competition_id, Competition.all, :id, :name, :include_blank => false  %>
   </div>
 
