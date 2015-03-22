@@ -1,10 +1,17 @@
-<h1>Listing Varsity Members</h1>
+<p style="text-align: right;"><%= wicked_pdf_image_tag 'ads_logo.png', :size => '200x75' %></p>
+
+<h1 style="text-align: center;">ATENEO DEBATE SOCIETY</h1>
+<h2 style="text-align: center;">BALANCE REPORT</h2>
+
+<p><strong>Date: </strong><%= Time.now.strftime("%m/%d/%Y") %> <span style="float: right;">Page 1 of 1</span></p>
+<p><strong>Competition: </strong>World Debate Series</p>
+
 <div class="responsive">
-  <table class="table table-striped">
+  <table class="table table-striped" style="border-spacing: 17px 10px; border: 1px solid black; ">
     <thead>
       <tr>
-        <th style="margin: 0 10px;">ID</th>
-        <th style="margin: 0 100px;">Last Name</th>
+        <th>ID</th>
+        <th>Last Name</th>
         <th>Varsity Track</th>
         <th>Debater Position</th>
         <th>Acquired QP</th>
