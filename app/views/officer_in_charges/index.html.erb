@@ -15,11 +15,12 @@
         <td><%= officer.email %></td>
         <td><%= Role.find(officer.role_id).name %></td>
         <td><%= officer.last_sign_in_at %></td>
-  <!--<td><%= link_to 'Delete', destroy_officer_in_charge_path(officer.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>-->
+        <<!-- td><%= link_to 'Edit', edit_officer_in_charge_password_path, class: "btn btn-warning" %></td>
+        <td><%= link_to 'Delete', officer_in_charge_password_path(@officer_in_charge), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td> -->
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<%= link_to "Create New Account", new_officer_in_charge_registration_path %>
+<%= link_to "Create New Account", new_officer_in_charge_registration_path, class: "btn btn-default" %>
