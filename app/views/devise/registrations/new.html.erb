@@ -9,7 +9,7 @@
     <%= f.input :password_confirmation, required: true %>
     <%= f.collection_select(:role_id, Role.all, :id, :name) %>
   </div>
-
+<br>
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
   </div>

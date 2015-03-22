@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   resources :contingents
   resources :acquired_quota_points
   resources :competition_debts
+  #resources :officer_in_charges
+  get "/officer_in_charges/index", to: "officer_in_charges#index", as: :officer_in_charges
+  delete "/officer_in_charges/:id", :to => "officer_in_charges#destroy", as: :destroy_officer_in_charge
   devise_for :officer_in_charges, :path_names => { :sign_up => "debate" }
   # devise_for :officer_in_charges, :skip => [:registrations] 
 

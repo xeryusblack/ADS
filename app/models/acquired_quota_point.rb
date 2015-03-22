@@ -46,26 +46,12 @@ class AcquiredQuotaPoint < ActiveRecord::Base
       self.activity_members.each do |amember|
     	  vm = VarsityMember.find(amember.varsity_member_id)
 
-        if ta.name == "Debate Round" 
-          if amember.article == true
-            if vm.debater_position == "Contingent Debater"
-              if amember.judge == true
-                sum = ta.quota_point_value/2
-                aqp_total = vm.total_acquired_quota_points + sum
-              else
-                sum = ta.quota_point_value
-                aqp_total = vm.total_acquired_quota_points + sum
-              end
-            elsif vm.debater_position == "Contingent Adjudicator"
-              if amember.judge == false
-                sum = ta.quota_point_value/2
-                aqp_total = vm.total_acquired_quota_points + sum
-              else
-                sum = ta.quota_point_value
-                aqp_total = vm.total_acquired_quota_points + sum
-              end
-            else vm.debater_position == "Non-contingent"
-              if vm.varsity_track == "Debater"
+        if ta.name == "Debate Round"
+
+            if amember.article == true
+
+              if vm.debater_position == "Contingent Debater"
+                
                 if amember.judge == true
                   sum = ta.quota_point_value/2
                   aqp_total = vm.total_acquired_quota_points + sum
@@ -73,27 +59,58 @@ class AcquiredQuotaPoint < ActiveRecord::Base
                   sum = ta.quota_point_value
                   aqp_total = vm.total_acquired_quota_points + sum
                 end
-              elsif vm.varsity_track == "Adjudicator" 
+
+              elsif vm.debater_position == "Contingent Adjudicator"
+
                 if amember.judge == false
                   sum = ta.quota_point_value/2
                   aqp_total = vm.total_acquired_quota_points + sum
                 else
                   sum = ta.quota_point_value
                   aqp_total = vm.total_acquired_quota_points + sum
+                end
+
+              elsif vm.debater_position == "Non-contingent"
+
+                if vm.varsity_track == "Debater"
+
+                  if amember.judge == true
+                    sum = ta.quota_point_value/2
+                    aqp_total = vm.total_acquired_quota_points + sum
+                  else
+                    sum = ta.quota_point_value
+                    aqp_total = vm.total_acquired_quota_points + sum
+                  end
+
+                elsif vm.varsity_track == "Adjudicator" 
+
+                  if amember.judge == false
+                    sum = ta.quota_point_value/2
+                    aqp_total = vm.total_acquired_quota_points + sum
+                  else
+                    sum = ta.quota_point_value
+                    aqp_total = vm.total_acquired_quota_points + sum
+                  end
+
+                elsif vm.varsity_track == "Debater and Adjudicator"
+                  sum = ta.quota_point_value
+                  aqp_total = vm.total_acquired_quota_points + sum
+                end
+                
               end
-              elsif vm.varsity_track == "Debater and Adjudicator"
-                sum = ta.quota_point_value
-                aqp_total = vm.total_acquired_quota_points + sum
+
+            else
+              sum = 0
+              aqp_total = vm.total_acquired_quota_points + sum
             end
-          end
+
         else
-                sum = ta.quota_point_value
-                aqp_total = vm.total_acquired_quota_points + sum
+          sum = ta.quota_point_value
+          aqp_total = vm.total_acquired_quota_points + sum
         end
-           vm.update(:total_acquired_quota_points => aqp_total)
-           amember.update(:amount => sum)
-	   end
-   end
+             vm.update(:total_acquired_quota_points => aqp_total)
+             amember.update(:amount => sum)
+     end
 
   end
 

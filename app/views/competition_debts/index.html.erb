@@ -15,9 +15,8 @@
       <tr>
         <td><%= competition_debt.varsity_member %></td>
         <td><%= competition_debt.competition %></td>
-        <td><%= number_to_currency(competition_debt.debt_amount, :unit => "Php") %></td>
+        <td style= "text-align: right;"><%= number_to_currency(competition_debt.debt_amount, :unit => "Php") %></td>
         <td><%= link_to 'Show', competition_debt %></td>
-        <td><%= link_to 'Edit', edit_varsity_member_path(competition_debt) %></td>
         <td><%= link_to 'Destroy', competition_debt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

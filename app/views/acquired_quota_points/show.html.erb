@@ -12,7 +12,7 @@
 
 <p>
     <strong>Quota Point Value of Training Activity:</strong>
-  <%= @acquired_quota_point.training_activity.quota_point_value  %>
+  <%= number_with_precision(@acquired_quota_point.training_activity.quota_point_value, precision: 2, delimiter: ',')  %>
 </p>
 
 <p> 
@@ -31,16 +31,10 @@
         <td><%= member.varsity_member.to_s%></td>
         <td><%= member.reply(member.judge)%></td>
         <td><%= member.reply(member.article)%></td>
-        <td><%= number_to_currency(member.amount, :unit => "Php") %></td>
+        <td style= "text-align: right;"><%= number_to_currency(member.amount, :unit => "Php") %></td>
 
       </tr>
     <% end %>
   </table>
-
-
-<!-- <p>
-  <strong>Amount:</strong>
-  <%= number_to_currency(@acquired_quota_point.amount, :unit => "Php") %>
-</p> -->
 
 <%= link_to 'Back', acquired_quota_points_path %>

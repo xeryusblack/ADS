@@ -1,13 +1,17 @@
 <%= simple_nested_form_for(@tryout_intent) do |f| %>
   <%= f.error_notification %>
 
-<% if Competition.find_by(status: "Ongoing") == nil || Competition.find_by(status: "Upcoming") == nil %>
+<% if Competition.find_by(status: "Ongoing") == nil && Competition.find_by(status: "Upcoming") == nil %>
 
   <p> There is no ongoing competition! </p>
   <% else %>
 
   <div class="form-inputs">
+<<<<<<< HEAD
     <%= f.date_select :date, selected: Date.today %>
+=======
+    <%= f.date_select :date, :selected => Date.today, :order => [ :day, :month, :year] %>
+>>>>>>> 90e1052ade7f1ca80afcfd4eb5685805006dfccc
   </div>
 
   <div class="form-inputs">

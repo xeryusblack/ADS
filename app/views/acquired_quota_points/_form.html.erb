@@ -2,13 +2,18 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.label 'What was the training activity done?' %>
+    <%= f.label 'What was the training activity done?' %><br>
     <%= f.association :training_activity, :include_blank => false %>
   </div>
 
   <div class="form-inputs">
+
     <%= f.label 'Date Conducted' %>
+<<<<<<< HEAD
     <%= f.date_select :date_conducted, selected: Date.today %>
+=======
+    <%= f.date_select :date_conducted, :selected => Date.today, :order => [ :day, :month, :year]%>
+>>>>>>> 90e1052ade7f1ca80afcfd4eb5685805006dfccc
   </div>
 
 

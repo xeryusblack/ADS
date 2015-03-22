@@ -8,11 +8,12 @@ class Ability
         officer_in_charge ||= OfficerInChrage.new # guest user
  
     if officer_in_charge.role? "Administrator"
-      can :manage, :all #[Contingent, Competition, TrainingActivity, VarsityMember, TryoutIntent, AcquiredQuotaPoint, DebtSettlement, VarsityMember, OfficerInChrage]
+      can :manage, [OfficerInCharge]
+      can :read, :all
     elsif officer_in_charge.role? "Office of Training and Varsity"
       can :manage, [Contingent, Competition, TrainingActivity, VarsityMember, TryoutIntent, AcquiredQuotaPoint]
     elsif officer_in_charge.role? "Office of Finance"
-      can :manage, [DebtSettlement, VarsityMember]
+      can :manage, [DebtSettlement, VarsityMember, CompetitionDebt]
       # manage products, assets he owns
       # can :manage, Product do |product|
       #   product.try(:owner) == user

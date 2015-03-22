@@ -27,12 +27,12 @@
 
   <div class="form-inputs">
     <%= f.label :start_date, "Start Date" %>
-    <%= f.date_select :start_date, selected: Date.today %>
+    <%= f.date_select :start_date, :selected => Date.today, :order => [ :day, :month, :year] %>
   </div>
 
   <div class="form-inputs">
     <%= f.label :end_date, "End Date" %>
-    <%= f.date_select :end_date, selected: Date.today %>
+    <%= f.date_select :end_date, :selected => Date.today + 1, :order => [ :day, :month, :year] %>
   </div>
 
   <div class="form-inputs">
