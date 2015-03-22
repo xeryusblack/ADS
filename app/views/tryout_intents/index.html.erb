@@ -14,9 +14,9 @@
       <tr>
         <td><%= tryout_intent.date %></td>
         <td><%= tryout_intent.competition.to_s %></td>
-        <td><%= link_to 'Show', tryout_intent %></td>
-        <td><%= link_to 'Edit', edit_tryout_intent_path(tryout_intent) %></td>
-        <td><%= link_to 'Destroy', tryout_intent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', tryout_intent, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_tryout_intent_path(tryout_intent), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Delete', tryout_intent, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'Register for Tryouts', new_tryout_intent_path %>
+<%= link_to 'Register for Tryouts', new_tryout_intent_path, class: "btn btn-default" %>

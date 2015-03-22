@@ -12,8 +12,8 @@
     <% @contingents.each do |contingent| %>
       <tr>
         <td><%= contingent.tryout_intent.competition %></td>
-        <td><%= link_to 'Show', contingent %></td>
-        <td><%= link_to 'Edit', edit_contingent_path(contingent) %></td>
+        <td><%= link_to 'Show', contingent, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_contingent_path(contingent), class: "btn btn-warning" %></td>
       </tr>
     <% end %>
   </tbody>
