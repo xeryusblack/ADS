@@ -1,4 +1,7 @@
 <h1>Listing Varsity Members</h1>
+<p><%= link_to "All", :action => "index" %> || 
+<%= link_to "No Debt", varsity_members_path(:total_debt=>"0") %> || 
+<%= link_to "With Debt", varsity_members_path(:total_debt=>"1") %> </p>
 <div class="responsive">
   <table class="table table-striped">
     <thead>

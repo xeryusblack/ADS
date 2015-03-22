@@ -1,8 +1,14 @@
 class VarsityMembersController < ApplicationController
    load_and_authorize_resource
   def index
-    @varsity_members = VarsityMember.all 
 
+    if params[:total_debt] == "0"
+      @varsity_members = VarsityMember.where("total_debt = 0")
+    elsif [:total_debt] == "1"
+       @varsity_members = VarsityMember.where("total_debt != 0")
+    else
+      @varsity_members = VarsityMember.all 
+    end
     render(:template => "varsity_members/index")
   end
 

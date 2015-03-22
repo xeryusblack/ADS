@@ -10,8 +10,8 @@ class OfficerInChargesController < ApplicationController
 
   redirect_to destroy_officer_in_charge_session_path
   if !officer_in_charge_signed_in?
-    redirect_to new_officer_in_charge_registration_path
-    #render(:template => "/debate")
+    #redirect_to new_officer_in_charge_registrations_path
+    render(:template => "/officer_in_charges/sign_up")
   end
 
   end
