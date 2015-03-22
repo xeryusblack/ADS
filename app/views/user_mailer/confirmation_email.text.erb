@@ -1,5 +1,4 @@
 Greetings <%= @user.to_s %>,
-===============================================
  
  Your payment has been  successfully made!
       
@@ -7,10 +6,13 @@ Amount Paid: Php <%= @debt.amount_paid %>
 
 Date Paid: Php <%= @debt.date_paid %>.
  
-Remaining Debt: Php <%= @user.total_debt %>
+Remaining Debt: Php <%= (@user.total_debt - @debt.amount_paid) %>
 
 Officer-In-Charge: <%= @officer.email %>
 
 Should there be any need for clarifications or corrections, contact: <%= @officer.email %>
 
 Thank You for your prompt payment and have a great day!
+
+ADS: Project Master Debater
+Quota Point and Debt Tracking System
