@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
 
  def report_email(admin, varsity)
   @admin = admin
-    @varsity_members = varsity
+    @varsity_members = varsity #.where("total_debt > 0")
   mail(:subject => 'Current Balance Report', :to => @admin.email) do |format|
     format.text
     format.pdf do

@@ -1,8 +1,16 @@
 class CompetitionsController < ApplicationController
    load_and_authorize_resource
   def index
-    @competitions = Competition.all 
-
+    if params[:status] == "Ongoing"
+      @competitions = Competition.where("status = ?", params[:status])
+    elsif params[:status] == "Completed"
+      @competitions = Competition.where("status = ?", params[:status])
+    elsif params[:status] == "Upcoming"
+      @competitions = Competition.where("status = ?", params[:status])
+    else
+      @competitions = Competition.all 
+    end
+    
     render(:template => "competitions/index")
   end
 
