@@ -1,7 +1,10 @@
 <h1>Listing Competitions</h1>
-<p><%= link_to "All", :action => "index" %> || 
-<%= link_to "Ongoing", competitions_path(:status=>"Ongoing") %> || 
-<%= link_to "Completed", competitions_path(:status=>"Completed") %> || <%= link_to "Upcoming", competitions_path(:status=>"Upcoming") %> </p>
+<p>
+<a class="btn btn-default" href="/competitions">All</a>
+<%= link_to "Ongoing", competitions_path(:status=>"Ongoing"), class: "btn btn-default" %>
+<%= link_to "Completed", competitions_path(:status=>"Completed"), class: "btn btn-default" %>
+<%= link_to "Upcoming", competitions_path(:status=>"Upcoming"), class: "btn btn-default" %> 
+</p>
 
 <table class="table table-stripped">
   <thead>
