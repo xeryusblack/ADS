@@ -1,7 +1,7 @@
 class UserMailer < ActionMailer::Base
   default from: "projectmasterdebater@gmail.com"
 
-    def confirmation_email(user, debt, officer)
+  def confirmation_email(user, debt, officer)
     @user = user
     @debt = debt
     @officer = officer
